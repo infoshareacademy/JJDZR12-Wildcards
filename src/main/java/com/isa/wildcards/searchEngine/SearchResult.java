@@ -16,12 +16,22 @@ public class SearchResult {
     private String awards;
     private int metascore;
 
-    public SearchResult(String title, int year, String rated,
-                        String released, String runtime, String genre,
-                        String director, String writer, String actors,
-                        String plot, String language, String country,
-                        String awards, int metascore) {
+    //prosty konstruktor do testów/ewentualnie do wyswietlania krótkiego info
+    public SearchResult(String title, String runtime, String actors, String plot, String language) {
+        this.title = title;
+        this.runtime = runtime;
+        this.actors = actors;
+        this.plot = plot;
+        this.language = language;
+    }
 
+    //pełny konstruktor do wyświetlania pełnej zawartości wpisu
+
+    //TODO docelowo zamienić na konwersje przy użyciu zewnętrznej biblioteki np. Jackson
+    public SearchResult(String title, int year, String rated, String released,
+                        String runtime, String genre, String director, String writer,
+                        String actors, String plot, String language, String country,
+                        String awards, int metascore) {
         this.title = title;
         this.year = year;
         this.rated = rated;
