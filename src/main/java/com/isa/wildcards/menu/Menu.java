@@ -20,40 +20,11 @@ public class Menu {
 
             switch (input) {
                 case 1:
-                    LoginMenu.loginMenu();
+                    LoginMenu.showMenu();
                     break;
 
                 case 2:
-                    while (true) {
-                        MenuUtils.printOptionsSubMenuTwo();
-
-                        if (!scan.hasNextInt()) {
-                            MenuUtils.wrongInput();
-                            scan.nextLine();
-                            continue;
-                        }
-
-                        int subTwoChoice = scan.nextInt();
-                        scan.nextLine();
-
-                        switch (subTwoChoice) {
-                            case 1:
-                                System.out.println("Type what do you want to search:");
-
-                                //TODO implementacja metod do wyszukiwania podstawowego
-
-                                break;
-                            case 2:
-                                MenuUtils.returning();
-                                break;
-                            default:
-                                MenuUtils.invalidChoice();
-                                break;
-                        }
-                        if (subTwoChoice == 2) {
-                            break;
-                        }
-                    }
+                    SubMenuTwo.ShowMenu();
                     break;
                 case 3:
                     System.out.println("Creating new user");

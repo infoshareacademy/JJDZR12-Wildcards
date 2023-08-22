@@ -2,11 +2,11 @@ package com.isa.wildcards.menu;
 
 import java.util.Scanner;
 
-public class LoginMenu {
-    public static void showMenu() {
+public class SubMenuTwo {
+    public static void ShowMenu() {
         Scanner scan = new Scanner(System.in);
         while (true) {
-            MenuUtils.printOptionsLoginMenu();
+            MenuUtils.printOptionsSubMenuTwo();
 
             if (!scan.hasNextInt()) {
                 MenuUtils.wrongInput();
@@ -14,17 +14,15 @@ public class LoginMenu {
                 continue;
             }
 
-            int subLoginChoice = scan.nextInt();
+            int subTwoChoice = scan.nextInt();
             scan.nextLine();
 
-            switch (subLoginChoice) {
+            switch (subTwoChoice) {
                 case 1:
-                    System.out.println("Enter Login credentials:");
+                    System.out.println("Type what do you want to search:");
 
-                    //TODO implementacja metod do logowania do systemu następnie przejście do reszty menu
-                    //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody
+                    //TODO implementacja metod do wyszukiwania podstawowego
 
-                    SubMenuOne.showMenu();
                     break;
                 case 2:
                     MenuUtils.returning();
@@ -33,7 +31,7 @@ public class LoginMenu {
                     MenuUtils.invalidChoice();
                     break;
             }
-            if (subLoginChoice == 2) {
+            if (subTwoChoice == 2) {
                 break;
             }
         }
