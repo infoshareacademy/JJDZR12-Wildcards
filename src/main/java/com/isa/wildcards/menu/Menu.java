@@ -30,6 +30,7 @@ public class Menu {
                     System.out.println("Creating new user");
 
                     //TODO implementacja metod do tworzenia uzytkownika nastepnie powrot do menu glownego
+                    //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody
 
                     break;
                 case 4:

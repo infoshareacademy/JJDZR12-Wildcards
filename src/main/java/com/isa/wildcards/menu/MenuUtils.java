@@ -37,12 +37,15 @@ public class MenuUtils {
         System.out.println("3. Return to Login Menu");
         System.out.println("Enter your choice (1-3): ");
     }
+
     public static void invalidChoice() {
         System.out.println("Invalid choice, please select again");
     }
+
     public static void wrongInput() {
         System.out.println("Invalid input. You need to enter a number!");
     }
+
     public static void returning() {
         System.out.println("Returning to Menu");
     }

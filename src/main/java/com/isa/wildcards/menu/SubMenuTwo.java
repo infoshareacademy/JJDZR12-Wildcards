@@ -22,6 +22,7 @@ public class SubMenuTwo {
                     System.out.println("Type what do you want to search:");
 
                     //TODO implementacja metod do wyszukiwania podstawowego
+                    //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody
 
                     break;
                 case 2:
