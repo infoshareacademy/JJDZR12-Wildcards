@@ -4,56 +4,138 @@ import java.util.Scanner;
 
 public class Menu {
     public static void showMenu() {
-        Scanner scanMain = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Menu:");
-            System.out.println("1. Search with login");
-            System.out.println("2. Search without login");
-            System.out.println("3. Create user");
-            System.out.println("4. Exit \n");
+            MenuUtils.printOptionsMain();
 
-            System.out.println("If you select search with login, you will be provided with these options: \n" +
-                    "- Search \n" +
-                    "- Search history \n");
-            System.out.println("If you select search without login, you will be provided with these options: \n" +
-                    "- Search \n");
-            System.out.print("Enter your choice (1-4): ");
-
-            if (!scanMain.hasNextInt()) {
-                System.out.println("Invalid input. You need to enter a number!");
-                scanMain.nextLine();
+            if (!scan.hasNextInt()) {
+                MenuUtils.wrongInput();
+                scan.nextLine();
                 continue;
             }
 
-            int input = scanMain.nextInt();
-            scanMain.nextLine();
+            int input = scan.nextInt();
+            scan.nextLine();
 
             switch (input) {
                 case 1:
-                    System.out.println("Search with login.");
+                    while (true) {
+                        MenuUtils.printOptionsLoginMenu();
 
+                        if (!scan.hasNextInt()) {
+                            MenuUtils.wrongInput();
+                            scan.nextLine();
+                            continue;
+                        }
+
+                        int subLoginChoice = scan.nextInt();
+                        scan.nextLine();
+
+                        switch (subLoginChoice) {
+                            case 1:
+                                System.out.println("Enter Login credentials:");
+
+                                //TODO implementacja metod do logowania do systemu następnie przejście do reszty menu
+
+                                while (true) {
+                                    MenuUtils.printOptionsSubMenuOne();
+
+                                    if (!scan.hasNextInt()) {
+                                        MenuUtils.wrongInput();
+                                        scan.nextLine();
+                                        continue;
+                                    }
+
+                                    int subOneChoice = scan.nextInt();
+                                    scan.nextLine();
+
+                                    switch (subOneChoice) {
+                                        case 1:
+                                            System.out.println("Type what do you want to search:");
+
+                                            //TODO implementacja metod do wyszukiwania zaawansowanego
+
+                                            break;
+                                        case 2:
+                                            System.out.println("Showing search history: ");
+
+                                            //TODO implementacja metod do pokazywania historii
+
+                                            break;
+                                        case 3:
+                                            MenuUtils.returning();
+                                            break;
+                                        default:
+                                            MenuUtils.invalidChoice();
+                                            break;
+                                    }
+                                    if (subOneChoice == 3) {
+                                        break;
+                                    }
+                                }
+                                break;
+                            case 2:
+                                MenuUtils.returning();
+                                break;
+                            default:
+                                MenuUtils.invalidChoice();
+                                break;
+                        }
+                        if (subLoginChoice == 2) {
+                            break;
+                        }
+                    }
                     break;
-                case 2:
-                    System.out.println("Search without login");
 
+                case 2:
+                    while (true) {
+                        MenuUtils.printOptionsSubMenuTwo();
+
+                        if (!scan.hasNextInt()) {
+                            MenuUtils.wrongInput();
+                            scan.nextLine();
+                            continue;
+                        }
+
+                        int subTwoChoice = scan.nextInt();
+                        scan.nextLine();
+
+                        switch (subTwoChoice) {
+                            case 1:
+                                System.out.println("Type what do you want to search:");
+
+                                //TODO implementacja metod do wyszukiwania podstawowego
+
+                                break;
+                            case 2:
+                                MenuUtils.returning();
+                                break;
+                            default:
+                                MenuUtils.invalidChoice();
+                                break;
+                        }
+                        if (subTwoChoice == 2) {
+                            break;
+                        }
+                    }
                     break;
                 case 3:
                     System.out.println("Creating new user");
 
+                    //TODO implementacja metod do tworzenia uzytkownika nastepnie powrot do menu glownego
+
                     break;
                 case 4:
-                    System.out.println("Exiting the menu");
-                    scanMain.close();
+                    MenuUtils.returning();
+                    scan.close();
                     return;
                 default:
-                    System.out.println("Invalid choice, please try again");
+                    MenuUtils.invalidChoice();
                     break;
             }
-
-            scanMain.close();
+            System.out.println("\n");
         }
-        }
-
     }
+}
 
