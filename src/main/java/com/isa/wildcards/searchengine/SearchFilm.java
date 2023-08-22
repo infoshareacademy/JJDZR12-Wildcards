@@ -1,6 +1,6 @@
-package com.isa.wildcards.searchEngine;
+package com.isa.wildcards.searchengine;
 
-public class SearchResult {
+public class SearchFilm {
     private String title;
     private int year;
     private String rated;
@@ -17,7 +17,7 @@ public class SearchResult {
     private int metascore;
 
     //prosty konstruktor do testów/ewentualnie do wyswietlania krótkiego info
-    public SearchResult(String title, String runtime, String actors, String plot, String language) {
+    public SearchFilm(String title, String runtime, String actors, String plot, String language) {
         this.title = title;
         this.runtime = runtime;
         this.actors = actors;
@@ -28,7 +28,7 @@ public class SearchResult {
     //pełny konstruktor do wyświetlania pełnej zawartości wpisu
 
     //TODO docelowo zamienić na konwersje przy użyciu zewnętrznej biblioteki np. Jackson
-    public SearchResult(String title, int year, String rated, String released,
+    public SearchFilm(String title, int year, String rated, String released,
                         String runtime, String genre, String director, String writer,
                         String actors, String plot, String language, String country,
                         String awards, int metascore) {
