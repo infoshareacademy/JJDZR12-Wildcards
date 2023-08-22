@@ -3,8 +3,8 @@ package com.isa.wildcards.menu;
 import java.util.Scanner;
 
 public class SubMenuTwo {
-    public static void ShowMenu() {
-        Scanner scan = new Scanner(System.in);
+    public static void ShowMenu(Scanner scan) {
+
         while (true) {
             MenuUtils.printOptionsSubMenuTwo();
 

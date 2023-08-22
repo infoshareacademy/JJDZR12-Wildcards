@@ -3,8 +3,8 @@ package com.isa.wildcards.menu;
 import java.util.Scanner;
 
 public class LoginMenu {
-    public static void showMenu() {
-        Scanner scan = new Scanner(System.in);
+    public static void showMenu(Scanner scan) {
+
         while (true) {
             MenuUtils.printOptionsLoginMenu();
 
@@ -24,7 +24,7 @@ public class LoginMenu {
                     //TODO implementacja metod do logowania do systemu następnie przejście do reszty menu
                     //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody
 
-                    SubMenuOne.showMenu();
+                    SubMenuOne.showMenu(scan);
                     break;
                 case 2:
                     MenuUtils.returning();

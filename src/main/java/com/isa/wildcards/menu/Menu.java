@@ -20,11 +20,11 @@ public class Menu {
 
             switch (input) {
                 case 1:
-                    LoginMenu.showMenu();
+                    LoginMenu.showMenu(scan);
                     break;
 
                 case 2:
-                    SubMenuTwo.ShowMenu();
+                    SubMenuTwo.ShowMenu(scan);
                     break;
                 case 3:
                     System.out.println("Creating new user");
