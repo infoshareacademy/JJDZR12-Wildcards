@@ -11,7 +11,7 @@ public class Search {
 
     private static List<MovieObject> fromJsonIntoMovieObjectsCollection() {
 
-        String filePath = "JJDZR12-Wildcards/src/main/resources/database.json";
+        String filePath = "src/main/resources/database.json";
         try {
             List<MovieObject> movies = readJsonFile(filePath);
             return movies;

@@ -32,20 +32,20 @@ public class PriorityManager {
 
     private static boolean containsKeyword(MovieObject movie, String keyword) {
 
-        if (movie.getTitle().toLowerCase().contains(keyword.toLowerCase())
+        if (movie.getTitle().toLowerCase().equals(keyword.toLowerCase())
                 || movie.getYear().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getRated().toLowerCase().contains(keyword.toLowerCase())
+                || movie.getRated().toLowerCase().equals(keyword.toLowerCase())
                 || movie.getReleased().toLowerCase().contains(keyword.toLowerCase())
                 || movie.getRuntime().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getGenre().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getDirector().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getWriter().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getActors().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getPlot().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getLanguage().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getCountry().toLowerCase().contains(keyword.toLowerCase())
+                || movie.getGenre().toLowerCase().equals(keyword.toLowerCase())
+                || movie.getDirector().toLowerCase().equals(keyword.toLowerCase())
+                || movie.getWriter().toLowerCase().equals(keyword.toLowerCase())
+                || movie.getActors().toLowerCase().equals(keyword.toLowerCase())
+                || movie.getPlot().toLowerCase().equals(keyword.toLowerCase())
+                || movie.getLanguage().toLowerCase().equals(keyword.toLowerCase())
+                || movie.getCountry().toLowerCase().equals(keyword.toLowerCase())
                 || movie.getAwards().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getMetascore().toLowerCase().contains(keyword.toLowerCase())) {
+                || movie.getMetascore().toLowerCase().equals(keyword.toLowerCase())) {
             return true;
         } else {
             return false;
