@@ -1,6 +1,6 @@
 package com.isa.wildcards.searchengine;
 
-import com.isa.wildcards.entities.MovieObject;
+import com.isa.wildcards.entity.MovieObject;
 
 import java.util.*;
 
@@ -32,24 +32,20 @@ public class PriorityManager {
 
     private static boolean containsKeyword(MovieObject movie, String keyword) {
 
-        if (movie.getTitle().toLowerCase().equals(keyword.toLowerCase())
+        return movie.getTitle().equalsIgnoreCase(keyword)
                 || movie.getYear().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getRated().toLowerCase().equals(keyword.toLowerCase())
+                || movie.getRated().equalsIgnoreCase(keyword)
                 || movie.getReleased().toLowerCase().contains(keyword.toLowerCase())
                 || movie.getRuntime().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getGenre().toLowerCase().equals(keyword.toLowerCase())
-                || movie.getDirector().toLowerCase().equals(keyword.toLowerCase())
-                || movie.getWriter().toLowerCase().equals(keyword.toLowerCase())
-                || movie.getActors().toLowerCase().equals(keyword.toLowerCase())
-                || movie.getPlot().toLowerCase().equals(keyword.toLowerCase())
-                || movie.getLanguage().toLowerCase().equals(keyword.toLowerCase())
-                || movie.getCountry().toLowerCase().equals(keyword.toLowerCase())
+                || movie.getGenre().equalsIgnoreCase(keyword)
+                || movie.getDirector().equalsIgnoreCase(keyword)
+                || movie.getWriter().equalsIgnoreCase(keyword)
+                || movie.getActors().equalsIgnoreCase(keyword)
+                || movie.getPlot().equalsIgnoreCase(keyword)
+                || movie.getLanguage().equalsIgnoreCase(keyword)
+                || movie.getCountry().equalsIgnoreCase(keyword)
                 || movie.getAwards().toLowerCase().contains(keyword.toLowerCase())
-                || movie.getMetascore().toLowerCase().equals(keyword.toLowerCase())) {
-            return true;
-        } else {
-            return false;
-        }
+                || movie.getMetascore().equalsIgnoreCase(keyword);
     }
 
     public static void showMoviesInPriorityOrder(Map<MovieObject, Integer> moviesWithPriorityPoints) {

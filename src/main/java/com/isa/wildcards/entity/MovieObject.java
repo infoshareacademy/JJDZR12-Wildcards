@@ -1,4 +1,4 @@
-package com.isa.wildcards.entities;
+package com.isa.wildcards.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

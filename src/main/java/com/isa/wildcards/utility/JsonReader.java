@@ -1,7 +1,8 @@
-package com.isa.wildcards.entities;
+package com.isa.wildcards.utility;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.isa.wildcards.entity.MovieObject;
 
 import java.io.File;
 import java.io.IOException;

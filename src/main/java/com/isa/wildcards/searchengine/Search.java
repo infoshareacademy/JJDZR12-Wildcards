@@ -1,11 +1,11 @@
 package com.isa.wildcards.searchengine;
 
-import com.isa.wildcards.entities.MovieObject;
+import com.isa.wildcards.entity.MovieObject;
 
 import java.io.*;
 import java.util.*;
 
-import static com.isa.wildcards.entities.JsonReader.readJsonFile;
+import static com.isa.wildcards.utility.JsonReader.readJsonFile;
 
 public class Search {
 
@@ -22,7 +22,7 @@ public class Search {
     }
 
     public static void searchMovie() {
-        ArrayList movies = new ArrayList<>(fromJsonIntoMovieObjectsCollection());
+        List<MovieObject> movies = new ArrayList<>(fromJsonIntoMovieObjectsCollection());
         Set<String> keyWords = new HashSet<>(SearchData.getKeyWords());
         Map<MovieObject, Integer> foundMovies = new HashMap<>(PriorityManager.assignPriorityToMovies(movies, keyWords));
         PriorityManager.showMoviesInPriorityOrder(foundMovies);
