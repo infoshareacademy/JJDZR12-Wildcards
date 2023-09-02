@@ -2,7 +2,7 @@ package com.isa.wildcards.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class MovieObject {
+public class Movie {
     @JsonProperty("Title")
     private String title;
     @JsonProperty("Year")

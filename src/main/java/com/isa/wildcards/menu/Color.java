@@ -1,6 +1,6 @@
 package com.isa.wildcards.menu;
 
-public enum Colors {
+public enum Color {
     RED("\u001B[31m"),
     GREEN("\u001B[32m"),
     YELLOW("\u001B[33m"),
@@ -11,7 +11,7 @@ public enum Colors {
 
     private final String code;
 
-    Colors(String code) {
+    Color(String code) {
         this.code = code;
     }
 
