@@ -24,7 +24,7 @@ public class SearchData {
 
     public static Set<String> getKeyWords(Scanner scan) {
         searchQuery = getSearchQueryFromUser(scan);
-        String[] keyWordsArray = searchQuery.split("[^\\p{L}0-9']+");
+        String[] keyWordsArray = searchQuery.split("(?![^\\p{L}0-9']+)(?i)(?!the|a)[^\\p{L}0-9']+");
         return new HashSet<>(Arrays.asList(keyWordsArray));
     }
 
