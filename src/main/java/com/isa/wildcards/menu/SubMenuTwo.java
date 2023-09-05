@@ -1,5 +1,7 @@
 package com.isa.wildcards.menu;
 
+import com.isa.wildcards.searchengine.Search;
+
 import java.util.Scanner;
 
 public class SubMenuTwo {
@@ -19,7 +21,7 @@ public class SubMenuTwo {
 
             switch (subTwoChoice) {
                 case 1:
-                    System.out.println("Type what do you want to search:");
+                    Search.searchMovie(scan);
 
                     //TODO implementacja metod do wyszukiwania podstawowego
                     //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody
