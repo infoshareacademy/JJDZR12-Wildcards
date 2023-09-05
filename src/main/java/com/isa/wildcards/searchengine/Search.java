@@ -16,8 +16,7 @@ public class Search {
             return readJsonFile(filePath);
         } catch (IOException e) {
             e.printStackTrace();
-            List<Movie> movies = Collections.EMPTY_LIST;
-            return movies;
+            return Collections.emptyList();
         }
     }
 
