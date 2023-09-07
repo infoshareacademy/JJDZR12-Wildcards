@@ -7,6 +7,7 @@ public class Menu {
         Scanner scan = new Scanner(System.in);
 
         while (true) {
+            Logo.printLogo();
             MenuUtils.printOptionsMain();
 
             if (!scan.hasNextInt()) {
