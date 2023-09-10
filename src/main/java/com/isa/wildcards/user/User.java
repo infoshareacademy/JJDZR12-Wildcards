@@ -2,27 +2,28 @@ package com.isa.wildcards.user;
 
 import java.util.LinkedList;
 import java.util.Objects;
+import java.util.UUID;
 
 public class User {
 
-    private int id;
+    private UUID uuid;
     private String username;
     private String password;
     private LinkedList<String> searchHistory;
 
-    public User(int id, String username, String password, LinkedList<String> searchHistory) {
-        this.id = id;
+    public User(UUID uuid, String username, String password, LinkedList<String> searchHistory) {
+        this.uuid = uuid;
         this.username = username;
         this.password = password;
         this.searchHistory = searchHistory;
     }
 
-    public int getId() {
-        return id;
+    public UUID getUuid() {
+        return uuid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public String getUsername() {
@@ -54,18 +55,18 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(searchHistory, user.searchHistory);
+        return Objects.equals(uuid, user.uuid) && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(searchHistory, user.searchHistory);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, password, searchHistory);
+        return Objects.hash(uuid, username, password, searchHistory);
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "uuid=" + uuid +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", searchHistory=" + searchHistory +
