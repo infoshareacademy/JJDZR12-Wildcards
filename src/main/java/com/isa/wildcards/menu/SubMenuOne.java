@@ -1,11 +1,16 @@
 package com.isa.wildcards.menu;
 
 import com.isa.wildcards.searchengine.Search;
+import com.isa.wildcards.searchhistory.UserHistory;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 import java.util.Scanner;
 
 public class SubMenuOne {
-    public static void showMenu(Scanner scan) {
+    public static void showMenu(Scanner scan) throws IOException {
+        UserHistory.inicializeQueriesList();
 
         while (true) {
             MenuUtils.printOptionsSubMenuOne();
@@ -21,18 +26,10 @@ public class SubMenuOne {
 
             switch (subOneChoice) {
                 case 1:
-                    Search.searchMovie(scan);
-
-                    //TODO implementacja metod do wyszukiwania zaawansowanego
-                    //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody
-
+                    Search.searchMovie(scan, true);
                     break;
                 case 2:
-                    System.out.println("Showing search history: ");
-
-                    //TODO implementacja metod do pokazywania historii
-                    //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody
-
+                    UserHistory.show(scan);
                     break;
                 case 3:
                     MenuUtils.returning();

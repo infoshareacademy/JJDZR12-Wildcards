@@ -2,10 +2,11 @@ package com.isa.wildcards.menu;
 
 import com.isa.wildcards.searchengine.Search;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class SubMenuTwo {
-    public static void ShowMenu(Scanner scan) {
+    public static void ShowMenu(Scanner scan) throws IOException {
 
         while (true) {
             MenuUtils.printOptionsSubMenuTwo();
@@ -21,7 +22,7 @@ public class SubMenuTwo {
 
             switch (subTwoChoice) {
                 case 1:
-                    Search.searchMovie(scan);
+                    Search.searchMovie(scan, false);
 
                     //TODO implementacja metod do wyszukiwania podstawowego
                     //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody

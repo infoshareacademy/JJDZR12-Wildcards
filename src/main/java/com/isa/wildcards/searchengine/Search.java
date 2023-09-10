@@ -20,9 +20,18 @@ public class Search {
         }
     }
 
-    public static void searchMovie(Scanner scan) {
+    public static void searchMovie(Scanner scan, boolean loggedUser) throws IOException {
         List<Movie> movies = fromJsonIntoMovieObjectsCollection();
-        Set<String> keyWords = SearchData.getKeyWords(scan);
+        Set<String> keyWords = SearchData.getKeyWords(scan, loggedUser);
+        Map<Movie, Integer> foundMovies = PriorityManager.assignPriorityToMovies(movies, keyWords);
+        PriorityManager.showMoviesInPriorityOrder(foundMovies);
+        if (foundMovies.isEmpty()) {
+            System.out.println("Nothing was found");
+        }
+    }
+    public static void searchMovie(Scanner scan, boolean loggedUser, String searchQuery) throws IOException {
+        List<Movie> movies = fromJsonIntoMovieObjectsCollection();
+        Set<String> keyWords = SearchData.getKeyWords(scan, loggedUser, searchQuery);
         Map<Movie, Integer> foundMovies = PriorityManager.assignPriorityToMovies(movies, keyWords);
         PriorityManager.showMoviesInPriorityOrder(foundMovies);
         if (foundMovies.isEmpty()) {

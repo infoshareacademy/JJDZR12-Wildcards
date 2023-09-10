@@ -1,7 +1,6 @@
 package com.isa.wildcards.searchengine;
 
 import com.isa.wildcards.entity.Movie;
-import com.isa.wildcards.menu.Color;
 
 import java.util.*;
 
@@ -50,11 +49,10 @@ public class PriorityManager {
     }
 
     public static void showMoviesInPriorityOrder(Map<Movie, Integer> moviesWithPriorityPoints) {
-        System.out.println("Your search result: " + "\n" + "\n" + "!! Most accurate result are from top to bottom. !!" + "\n");
+        System.out.println("Your search result: ");
         moviesWithPriorityPoints.entrySet().stream()
                 .sorted((entry1, entry2) -> Integer.compare(entry2.getValue(), entry1.getValue()))
                 .forEach(entry -> System.out.println(entry.getKey()));
-        System.out.println(Color.CYAN.getCode() + "End of search" + "\n" +
-                "----------------------------------------------------------------------------------" + Color.RESET.getCode() );
+        System.out.println("-----------------------------------------------------------------------------------------");
     }
 }

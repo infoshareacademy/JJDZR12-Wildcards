@@ -1,9 +1,10 @@
 package com.isa.wildcards.menu;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Menu {
-    public static void showMenu() {
+    public static void showMenu() throws IOException {
         Scanner scan = new Scanner(System.in);
 
         while (true) {

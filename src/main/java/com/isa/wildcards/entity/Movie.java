@@ -1,7 +1,6 @@
 package com.isa.wildcards.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.isa.wildcards.menu.Color;
 
 public class Movie {
     @JsonProperty("Title")
@@ -147,17 +146,21 @@ public class Movie {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(Color.CYAN.getCode()).append("Your search entry: ").append(Color.RESET.getCode()).append("\n");
-        sb.append(Color.BLUE.getCode()).append("Title: ").append(title).append("\n");
-        sb.append("Date of release: ").append(released).append("\n");
-        sb.append("Genre: ").append(genre).append("\n");
-        sb.append("Runtime: ").append(runtime).append("\n");
-        sb.append("Country: ").append(country).append("\n");
-        sb.append("Director: ").append(director).append("\n");
-        sb.append("Actors: ").append(actors).append("\n");
-        sb.append("Main plot: " + "\n").append(plot).append(Color.RESET.getCode());
-        sb.append("\n").append("\n");
-        return sb.toString();
+        return "MovieObject{" +
+                "title='" + title + '\'' +
+                ", year='" + year + '\'' +
+                ", rated='" + rated + '\'' +
+                ", released='" + released + '\'' +
+                ", runtime='" + runtime + '\'' +
+                ", genre='" + genre + '\'' +
+                ", director='" + director + '\'' +
+                ", writer='" + writer + '\'' +
+                ", actors='" + actors + '\'' +
+                ", plot='" + plot + '\'' +
+                ", language='" + language + '\'' +
+                ", country='" + country + '\'' +
+                ", awards='" + awards + '\'' +
+                ", metascore='" + metascore + '\'' +
+                '}';
     }
 }
