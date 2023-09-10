@@ -2,13 +2,17 @@ package com.isa.wildcards.user;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
+import java.util.UUID;
 
 public class User {
+    private UUID id;
     private String username;
     private String password;
     private File searchHistoryFile;
 
     public User(final int id, final String username, final String password) throws IOException {
+        this.id=UUID.randomUUID();
         this.username = username;
         this.password = password;
         this.searchHistoryFile = new File("src/main/resources/userhistory/" + username + ".txt");
@@ -36,6 +40,19 @@ public class User {
 
     public void setSearchHistoryFile(final File searchHistoryFile) {
         this.searchHistoryFile = searchHistoryFile;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+        final User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getSearchHistoryFile(), user.getSearchHistoryFile());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, getUsername(), getPassword(), getSearchHistoryFile());
     }
 
     @Override

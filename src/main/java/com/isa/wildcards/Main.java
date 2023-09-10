@@ -2,7 +2,6 @@ package com.isa.wildcards;
 
 
 import com.isa.wildcards.menu.Menu;
-
 import java.io.IOException;
 
 public class Main {
