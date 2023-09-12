@@ -17,8 +17,12 @@ public class UserHistory {
     private UserHistory(final User user, final BufferedWriter bufferedWriter) {
     }
 
-    public static void write(final String searchQuery) throws IOException {
-        user.getSearchHistoryFile().createNewFile();
+    public static void write(final String searchQuery) {
+        try {
+            user.getSearchHistoryFile().createNewFile();
+        } catch (IOException e) {
+            System.out.println("Error: failed to create file");
+        }
         try {
             randomAccessFile.seek(randomAccessFile.length());
             if (randomAccessFile.length() == 0) {
@@ -31,7 +35,7 @@ public class UserHistory {
         }
     }
 
-    public static void show(Scanner scan) throws IOException {
+    public static void show(Scanner scan) {
         if (queriesList.isEmpty()) {
             System.out.println("History is empty");
         } else {
@@ -39,32 +43,29 @@ public class UserHistory {
             List<String> copyList = new ArrayList<>(queriesList);
             Collections.reverse(copyList);
             System.out.println(Color.MAGENTA.getCode() + "Enter order number of search query" + Color.RESET.getCode());
-            copyList.forEach(s -> System.out.println(indexOfElementPlusOne.addAndGet(1) + ": " + s));
+            copyList.forEach(searchOption -> System.out.println(indexOfElementPlusOne.addAndGet(1) + ": " + searchOption));
             System.out.println(Color.MAGENTA.getCode() + "Or \"0\" to return to previous menu" + Color.RESET.getCode());
-            getUserChoice(scan, indexOfElementPlusOne);
+            getUserChoice(scan, indexOfElementPlusOne, copyList);
         }
     }
 
-    private static void getUserChoice(Scanner scan, AtomicInteger rangeOfChecking) throws IOException {
-        while (true) {
-            if (!scan.hasNextInt()) {
-                MenuUtils.wrongInput();
-                scan.nextLine();
-                continue;
-            }
-            int choice = scan.nextInt();
+    private static void getUserChoice(Scanner scan, AtomicInteger rangeOfChecking, List<String> reversedList) {
+
+        if (!scan.hasNextInt()) {
+            MenuUtils.wrongInput();
             scan.nextLine();
+            getUserChoice(scan, rangeOfChecking, reversedList);
+        }
+        int choice = scan.nextInt();
+        scan.nextLine();
 
-            if (choice > 0 && choice <= rangeOfChecking.get()) {
-                Search.searchMovie(scan, true, queriesList.get(choice - 1));
-                break;
-            } else if (choice == 0) {
-                break;
-            } else {
-                MenuUtils.invalidChoice();
-            }
+        if (choice > 0 && choice <= rangeOfChecking.get()) {
+            Search.searchMovie(scan, true, reversedList.get(choice - 1));
+        } else {
+            MenuUtils.invalidChoice();
         }
     }
+
 
     public static void setValuesUserHistoryWriter(final User user) {
         UserHistory.user = user;
@@ -75,8 +76,13 @@ public class UserHistory {
         }
     }
 
-    private static List<String> getExistQueries() throws FileNotFoundException {
-        Scanner scanner = new Scanner(new FileReader(user.getSearchHistoryFile()));
+    private static List<String> getExistQueries() {
+        Scanner scanner = null;
+        try {
+            scanner = new Scanner(new FileReader(user.getSearchHistoryFile()));
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: File not found");
+        }
         List<String> list = new LinkedList<>();
         while (scanner.hasNextLine()) {
             list.add(scanner.nextLine());
@@ -84,7 +90,7 @@ public class UserHistory {
         return list;
     }
 
-    public static void inicializeQueriesList() throws FileNotFoundException {
+    public static void initializeQueriesList() {
         if (queriesList == null) {
             queriesList = new LinkedList<>(getExistQueries());
         }

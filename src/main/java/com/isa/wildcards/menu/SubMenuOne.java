@@ -3,14 +3,11 @@ package com.isa.wildcards.menu;
 import com.isa.wildcards.searchengine.Search;
 import com.isa.wildcards.searchhistory.UserHistory;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
 import java.util.Scanner;
 
 public class SubMenuOne {
-    public static void showMenu(Scanner scan) throws IOException {
-        UserHistory.inicializeQueriesList();
+    public static void showMenu(Scanner scan) {
+        UserHistory.initializeQueriesList();
 
         while (true) {
             MenuUtils.printOptionsSubMenuOne();

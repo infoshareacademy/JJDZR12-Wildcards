@@ -1,18 +1,17 @@
 package com.isa.wildcards.user;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
 import java.util.UUID;
 
 public class User {
-    private UUID id;
+    private final UUID id;
     private String username;
     private String password;
     private File searchHistoryFile;
 
-    public User(final int id, final String username, final String password) throws IOException {
-        this.id=UUID.randomUUID();
+    public User(final String username, final String password) {
+        this.id = UUID.randomUUID();
         this.username = username;
         this.password = password;
         this.searchHistoryFile = new File("src/main/resources/userhistory/" + username + ".txt");

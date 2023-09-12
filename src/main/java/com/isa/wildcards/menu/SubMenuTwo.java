@@ -2,11 +2,10 @@ package com.isa.wildcards.menu;
 
 import com.isa.wildcards.searchengine.Search;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class SubMenuTwo {
-    public static void ShowMenu(Scanner scan) throws IOException {
+    public static void ShowMenu(Scanner scan) {
 
         while (true) {
             MenuUtils.printOptionsSubMenuTwo();
