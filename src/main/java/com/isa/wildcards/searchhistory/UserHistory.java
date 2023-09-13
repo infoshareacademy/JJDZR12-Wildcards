@@ -58,7 +58,7 @@ public class UserHistory {
 
         if (choice > 0 && choice <= rangeOfChecking.get()) {
             Search.searchMovie(reversedList.get(choice - 1));
-        } else {
+        } else if (choice < 0) {
             MenuUtils.invalidChoice();
         }
     }
@@ -74,13 +74,12 @@ public class UserHistory {
     }
 
     private static List<String> getExistQueries() {
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(new FileReader(user.getSearchHistoryFile()));
-            List<String> list = new LinkedList<>();
+        List<String> list = new LinkedList<>();
+        try (Scanner scanner = new Scanner(new FileReader(user.getSearchHistoryFile()))) {
             while (scanner.hasNextLine()) {
                 list.add(scanner.nextLine());
             }
+            return list;
         } catch (FileNotFoundException e) {
             System.out.println("Error: File not found");
         }
