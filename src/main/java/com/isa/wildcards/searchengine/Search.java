@@ -30,9 +30,9 @@ public class Search {
         }
     }
 
-    public static void searchMovie(Scanner scan, boolean loggedUser, String searchQuery) {
+    public static void searchMovie(String searchQuery) {
         List<Movie> movies = fromJsonIntoMovieObjectsCollection();
-        Set<String> keyWords = SearchData.getKeyWords(scan, loggedUser, searchQuery);
+        Set<String> keyWords = SearchData.getKeyWords(searchQuery);
         Map<Movie, Integer> foundMovies = PriorityManager.assignPriorityToMovies(movies, keyWords);
         PriorityManager.showMoviesInPriorityOrder(foundMovies);
         if (foundMovies.isEmpty()) {

@@ -33,7 +33,7 @@ public class SearchData {
         return new HashSet<>(Arrays.asList(keyWordsArray));
     }
 
-    public static Set<String> getKeyWords(Scanner scan, boolean loggedUser, String searchQuery) {
+    public static Set<String> getKeyWords(String searchQuery) {
         String[] keyWordsArray = searchQuery.split("(?![^\\p{L}0-9']+)(?i)(?!the|a)[^\\p{L}0-9']+");
         return new HashSet<>(Arrays.asList(keyWordsArray));
     }

@@ -14,9 +14,6 @@ public class UserHistory {
     private static RandomAccessFile randomAccessFile;
     private static List<String> queriesList;
 
-    private UserHistory(final User user, final BufferedWriter bufferedWriter) {
-    }
-
     public static void write(final String searchQuery) {
         try {
             user.getSearchHistoryFile().createNewFile();
@@ -60,7 +57,7 @@ public class UserHistory {
         scan.nextLine();
 
         if (choice > 0 && choice <= rangeOfChecking.get()) {
-            Search.searchMovie(scan, true, reversedList.get(choice - 1));
+            Search.searchMovie(reversedList.get(choice - 1));
         } else {
             MenuUtils.invalidChoice();
         }
@@ -80,14 +77,14 @@ public class UserHistory {
         Scanner scanner = null;
         try {
             scanner = new Scanner(new FileReader(user.getSearchHistoryFile()));
+            List<String> list = new LinkedList<>();
+            while (scanner.hasNextLine()) {
+                list.add(scanner.nextLine());
+            }
         } catch (FileNotFoundException e) {
             System.out.println("Error: File not found");
         }
-        List<String> list = new LinkedList<>();
-        while (scanner.hasNextLine()) {
-            list.add(scanner.nextLine());
-        }
-        return list;
+        return Collections.emptyList();
     }
 
     public static void initializeQueriesList() {
