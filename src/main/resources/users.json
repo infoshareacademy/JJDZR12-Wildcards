@@ -1,12 +1,19 @@
-[
 {
-  "id":"01",
-  "Login": "Admin",
-  "Password": "admin9876!"
-},
-{
-  "id":"02",
-  "Login": "Chad9119",
-  "Password": "iAMtheBest69"
+  "users": [
+    {
+      "uuid": "5fb036c1-51ad-11ee-a50c-21a07fcf0a38",
+      "username": "Admin",
+      "password": "admin123!"
+    },
+    {
+      "uuid": "5fb036c0-51ad-11ee-a50c-21a07fcf0a38",
+      "username": "Test",
+      "password": "test123!"
+    },
+    {
+      "uuid": "031d981f-7ac5-4975-b70e-cae602bd4966",
+      "username": "dupa",
+      "password": "dupa"
+    }
+  ]
 }
-]
