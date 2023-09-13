@@ -3,6 +3,7 @@ package com.isa.wildcards.user;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -11,7 +12,7 @@ public class User {
     private UUID uuid;
     private String username;
     private String password;
-    private transient LinkedList<String> searchHistory;
+    private List<String> searchHistory;
 
     public User(UUID uuid, String username, String password, LinkedList<String> searchHistory) {
         this.uuid = uuid;
@@ -44,11 +45,11 @@ public class User {
         this.password = password;
     }
 
-    public LinkedList<String> getSearchHistory() {
+    public List<String> getSearchHistory() {
         return searchHistory;
     }
 
-    public void setSearchHistory(LinkedList<String> searchHistory) {
+    public void setSearchHistory(List<String> searchHistory) {
         this.searchHistory = searchHistory;
     }
 
