@@ -79,11 +79,10 @@ public class UserHistory {
             while (scanner.hasNextLine()) {
                 list.add(scanner.nextLine());
             }
-            return list;
         } catch (FileNotFoundException e) {
             System.out.println("Error: File not found");
         }
-        return Collections.emptyList();
+        return list;
     }
 
     public static void initializeQueriesList() {
