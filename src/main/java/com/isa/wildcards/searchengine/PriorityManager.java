@@ -55,6 +55,6 @@ public class PriorityManager {
                 .sorted((entry1, entry2) -> Integer.compare(entry2.getValue(), entry1.getValue()))
                 .forEach(entry -> System.out.println(entry.getKey()));
         System.out.println(Color.CYAN.getCode() + "End of search" + "\n" +
-                "----------------------------------------------------------------------------------" + Color.RESET.getCode() );
+                "----------------------------------------------------------------------------------" + Color.RESET.getCode());
     }
 }

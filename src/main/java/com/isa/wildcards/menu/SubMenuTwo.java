@@ -21,7 +21,7 @@ public class SubMenuTwo {
 
             switch (subTwoChoice) {
                 case 1:
-                    Search.searchMovie(scan);
+                    Search.searchMovie(scan, false);
 
                     //TODO implementacja metod do wyszukiwania podstawowego
                     //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody

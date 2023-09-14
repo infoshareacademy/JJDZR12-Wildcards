@@ -1,5 +1,8 @@
 package com.isa.wildcards.menu;
 
+import com.isa.wildcards.searchhistory.UserHistory;
+import com.isa.wildcards.user.User;
+
 import java.util.Scanner;
 
 public class LoginMenu {
@@ -24,6 +27,10 @@ public class LoginMenu {
                     //TODO implementacja metod do logowania do systemu następnie przejście do reszty menu
                     //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody
 
+                    //TODO Zamienić var user na metodę logowania
+                    User user = new User("artemnizhnyk", "12345");
+                    //TODO UserHistory.setValuesUserHistoryWriter musi wyłowywać się na koniec metody logowania
+                    UserHistory.setValuesUserHistoryWriter(user);
                     SubMenuOne.showMenu(scan);
                     break;
                 case 2:
