@@ -1,12 +1,20 @@
-[
 {
-  "id":"01",
-  "Login": "Admin",
-  "Password": "admin9876!"
-},
-{
-  "id":"02",
-  "Login": "Chad9119",
-  "Password": "iAMtheBest69"
+  "users": [
+    {
+      "username": "Admin",
+      "password": "admin123!"
+    },
+    {
+      "username": "Test",
+      "password": "test123!"
+    },
+    {
+      "username": "artem",
+      "password": "artem"
+    },
+    {
+      "username": "any",
+      "password": "any"
+    }
+  ]
 }
-]

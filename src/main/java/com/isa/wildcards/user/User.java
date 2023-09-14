@@ -5,10 +5,10 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class User {
-    private final UUID id;
+    private transient final UUID id;
     private String username;
     private String password;
-    private File searchHistoryFile;
+    private transient File searchHistoryFile;
 
     public User(final String username, final String password) {
         this.id = UUID.randomUUID();
