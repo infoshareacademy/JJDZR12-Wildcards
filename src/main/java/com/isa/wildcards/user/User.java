@@ -5,16 +5,20 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class User {
-    private final UUID id;
+    private transient final UUID id;
     private String username;
     private String password;
-    private File searchHistoryFile;
+    private transient File searchHistoryFile;
 
     public User(final String username, final String password) {
         this.id = UUID.randomUUID();
         this.username = username;
         this.password = password;
         this.searchHistoryFile = new File("src/main/resources/userhistory/" + username + ".txt");
+    }
+
+    public User() {
+        this.id = UUID.randomUUID();
     }
 
     public String getUsername() {
@@ -39,6 +43,9 @@ public class User {
 
     public void setSearchHistoryFile(final File searchHistoryFile) {
         this.searchHistoryFile = searchHistoryFile;
+    }
+    public void setSearchHistoryFileAfterGetExistUser(String username) {
+        this.searchHistoryFile = new File("src/main/resources/userhistory/" + username + ".txt");
     }
 
     @Override

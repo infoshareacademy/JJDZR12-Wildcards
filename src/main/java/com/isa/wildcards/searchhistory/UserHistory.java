@@ -18,7 +18,7 @@ public class UserHistory {
         try {
             user.getSearchHistoryFile().createNewFile();
         } catch (IOException e) {
-            System.out.println("Error: failed to create file");
+            System.out.println(Color.RED.getCode() + "Error: failed to create file" + Color.RESET.getCode());
         }
         try {
             randomAccessFile.seek(randomAccessFile.length());
@@ -34,14 +34,14 @@ public class UserHistory {
 
     public static void show(Scanner scan) {
         if (queriesList.isEmpty()) {
-            System.out.println("History is empty");
+            System.out.println(Color.YELLOW.getCode() + "History is empty" + Color.RESET.getCode());
         } else {
             final AtomicInteger indexOfElementPlusOne = new AtomicInteger();
             List<String> copyList = new ArrayList<>(queriesList);
             Collections.reverse(copyList);
-            System.out.println(Color.MAGENTA.getCode() + "Enter order number of search query" + Color.RESET.getCode());
+            System.out.println(Color.CYAN.getCode() + "Enter order number of search query" + Color.RESET.getCode());
             copyList.forEach(searchOption -> System.out.println(indexOfElementPlusOne.addAndGet(1) + ": " + searchOption));
-            System.out.println(Color.MAGENTA.getCode() + "Or \"0\" to return to previous menu" + Color.RESET.getCode());
+            System.out.println(Color.CYAN.getCode() + "Or \"0\" to return to previous menu" + Color.RESET.getCode());
             getUserChoice(scan, indexOfElementPlusOne, copyList);
         }
     }
@@ -80,15 +80,14 @@ public class UserHistory {
                 list.add(scanner.nextLine());
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Error: File not found");
+            System.out.println(Color.RED.getCode() + "Error: File not found" + Color.RESET.getCode());
         }
         return list;
     }
 
     public static void initializeQueriesList() {
-        if (queriesList == null) {
             queriesList = new LinkedList<>(getExistQueries());
-        }
+
     }
 
     public static User getUser() {
