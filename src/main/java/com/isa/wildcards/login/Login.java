@@ -2,10 +2,7 @@ package com.isa.wildcards.login;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.isa.wildcards.menu.Color;
-import com.isa.wildcards.menu.LoginMenu;
-import com.isa.wildcards.menu.SubMenuOne;
-import com.isa.wildcards.menu.SubMenuTwo;
+import com.isa.wildcards.menu.*;
 import com.isa.wildcards.searchhistory.UserHistory;
 import com.isa.wildcards.user.User;
 import java.io.FileNotFoundException;
@@ -35,22 +32,25 @@ public class Login {
         System.out.println(Color.CYAN.getCode() + "Enter your password: " + Color.RESET.getCode());
         String password = scanner.nextLine();
 
-        Optional<User> first = users.getUsers().stream().filter(user -> user.getUsername().equals(username)
-                && user.getPassword().equals(password)).findFirst();
+        Optional<User> first = users.getUsers()
+                .stream()
+                .filter(user -> user.getUsername().equals(username) && user.getPassword().equals(password))
+                .findFirst();
 
         if (first.isPresent()) {
-            System.out.println("Welcome " + first.get().getUsername());
+            System.out.println("You logged in as " + first.get().getUsername());
             User user = first.get();
             user.setSearchHistoryFileAfterGetExistUser(user.getUsername());
             return user;
             //TODO: menu dla zalogowanych uzytkownikow
         } else {
-            System.out.println("Wrong user. Do you want to create a new user?(yes/no)");
+            System.out.println("Wrong user. Do you want to create a new user?(Enter 'yes' to create new user)");
             String ans = scanner.nextLine();
             if (ans.equals("yes")) {
                 System.out.println("create new user");
                 return createNewUser();
             }
+            System.out.println("Returning to main menu");
             LoginMenu.showMenu(scan);
         }return null;
     }
@@ -72,12 +72,29 @@ public class Login {
         } catch (FileNotFoundException e) {
             System.out.println("Error: File not found");
         }
-        users.getUsers().add(user);
+        Optional<User> sameLogin = users.getUsers()
+                .stream()
+                .filter(l -> l.getUsername().equals(name))
+                .findFirst();
 
-        try (FileWriter writer = new FileWriter(fileName)) {
-            gson.toJson(users, writer);
-        } catch (IOException e) {
-            System.out.println("Error: File not found");
-        }return user;
+        if(sameLogin.isPresent()) {
+
+            System.out.println(sameLogin.get().getUsername() + " already exists!");
+            Menu.showMenu();
+            return new User();
+        } else {
+            users.getUsers().add(user);
+            try (FileWriter writer = new FileWriter(fileName)) {
+                gson.toJson(users, writer);
+            } catch (IOException e) {
+                System.out.println("Error: File not found");
+            }return user;
+        }
+
+//        try (FileWriter writer = new FileWriter(fileName)) {
+//            gson.toJson(users, writer);
+//        } catch (IOException e) {
+//            System.out.println("Error: File not found");
+//        }return user;
     }
 }
