@@ -34,14 +34,13 @@ public class Menu {
                         SubMenuOne.showMenu(scan);
                         break;
                     case 4:
-                        MenuUtils.returning();
-                        break;
+                        MenuUtils.closing();
+                        return;
                     default:
                         MenuUtils.invalidChoice();
                         break;
                 }
                 System.out.println("\n");
-            return;
             }
         }
     }

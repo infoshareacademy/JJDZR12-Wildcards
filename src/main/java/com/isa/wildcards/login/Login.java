@@ -2,6 +2,7 @@ package com.isa.wildcards.login;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.isa.wildcards.menu.Color;
 import com.isa.wildcards.menu.LoginMenu;
 import com.isa.wildcards.menu.SubMenuOne;
 import com.isa.wildcards.menu.SubMenuTwo;
@@ -29,9 +30,9 @@ public class Login {
         Users users = gson.fromJson(new FileReader(fileName), Users.class);
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your username: ");
+        System.out.println(Color.CYAN.getCode() + "Enter your username: " + Color.RESET.getCode());
         String username = scanner.nextLine();
-        System.out.println("Enter your password: ");
+        System.out.println(Color.CYAN.getCode() + "Enter your password: " + Color.RESET.getCode());
         String password = scanner.nextLine();
 
         Optional<User> first = users.getUsers().stream().filter(user -> user.getUsername().equals(username)

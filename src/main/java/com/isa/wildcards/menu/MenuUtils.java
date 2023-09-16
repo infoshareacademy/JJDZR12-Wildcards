@@ -49,4 +49,8 @@ public class MenuUtils {
     public static void returning() {
         System.out.println(Color.YELLOW.getCode() + "Returning to Menu" + Color.RESET.getCode());
     }
-}
+    public static void closing() {
+        System.out.println(Color.YELLOW.getCode() + "Closing application" + Color.RESET.getCode());
+        System.exit(0);
+        }
+    }
