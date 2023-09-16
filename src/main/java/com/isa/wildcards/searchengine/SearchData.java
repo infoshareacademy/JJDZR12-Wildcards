@@ -16,7 +16,7 @@ public class SearchData {
         System.out.println(Color.CYAN.getCode() + "Enter something about movie which you want to find..." + Color.RESET.getCode());
         searchQuery = scan.nextLine();
         if (searchQuery.isEmpty()) {
-            System.out.println("You should enter something");
+            System.out.println(Color.YELLOW.getCode() + "You should enter something" + Color.RESET.getCode());
             getSearchQueryFromUser(scan, loggedUser);
         }
         if (loggedUser) {

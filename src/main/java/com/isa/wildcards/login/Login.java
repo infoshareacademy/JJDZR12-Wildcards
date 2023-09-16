@@ -39,16 +39,16 @@ public class Login {
                 && user.getPassword().equals(password)).findFirst();
 
         if (first.isPresent()) {
-            System.out.println("Welcome " + first.get().getUsername());
+            System.out.println(Color.CYAN.getCode() + "Welcome " + first.get().getUsername() + Color.RESET.getCode());
             User user = first.get();
             user.setSearchHistoryFileAfterGetExistUser(user.getUsername());
             return user;
             //TODO: menu dla zalogowanych uzytkownikow
         } else {
-            System.out.println("Wrong user. Do you want to create a new user?(yes/no)");
+            System.out.println(Color.CYAN.getCode() + "Wrong user. Do you want to create a new user?(yes/no)" + Color.RESET.getCode());
             String ans = scanner.nextLine();
             if (ans.equals("yes")) {
-                System.out.println("create new user");
+                System.out.println(Color.CYAN.getCode() + "create new user" + Color.RESET.getCode());
                 return createNewUser();
             }
             LoginMenu.showMenu(scan);
@@ -58,9 +58,9 @@ public class Login {
     public static User createNewUser() {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter username for new user:");
+        System.out.println(Color.CYAN.getCode() + "Enter username for new user:" + Color.RESET.getCode());
         String name = scanner.nextLine();
-        System.out.println("Enter password for new user:");
+        System.out.println(Color.CYAN.getCode() + "Enter password for new user:" + Color.RESET.getCode());
         String password = scanner.nextLine();
 
         User user = new User(name, password);
@@ -70,14 +70,14 @@ public class Login {
         try {
             users = gson.fromJson(new FileReader(fileName), Users.class);
         } catch (FileNotFoundException e) {
-            System.out.println("Error: File not found");
+            System.out.println(Color.RED.getCode() + "Error: File not found" + Color.RESET.getCode());
         }
         users.getUsers().add(user);
 
         try (FileWriter writer = new FileWriter(fileName)) {
             gson.toJson(users, writer);
         } catch (IOException e) {
-            System.out.println("Error: File not found");
+            System.out.println(Color.RED.getCode() + "Error: File not found" + Color.RESET.getCode());
         }return user;
     }
 }

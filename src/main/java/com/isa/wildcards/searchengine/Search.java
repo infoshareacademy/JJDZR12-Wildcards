@@ -1,6 +1,7 @@
 package com.isa.wildcards.searchengine;
 
 import com.isa.wildcards.entity.Movie;
+import com.isa.wildcards.menu.Color;
 
 import java.io.*;
 import java.util.*;
@@ -26,7 +27,7 @@ public class Search {
         Map<Movie, Integer> foundMovies = PriorityManager.assignPriorityToMovies(movies, keyWords);
         PriorityManager.showMoviesInPriorityOrder(foundMovies);
         if (foundMovies.isEmpty()) {
-            System.out.println("Nothing was found");
+            System.out.println(Color.YELLOW.getCode() + "Nothing was found" + Color.RESET.getCode());
         }
     }
 
@@ -36,7 +37,7 @@ public class Search {
         Map<Movie, Integer> foundMovies = PriorityManager.assignPriorityToMovies(movies, keyWords);
         PriorityManager.showMoviesInPriorityOrder(foundMovies);
         if (foundMovies.isEmpty()) {
-            System.out.println("Nothing was found");
+            System.out.println(Color.YELLOW.getCode() + "Nothing was found" + Color.RESET.getCode());
         }
     }
 }

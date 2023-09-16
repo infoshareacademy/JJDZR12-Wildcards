@@ -29,7 +29,7 @@ public class LoginMenu {
                         UserHistory.setValuesUserHistoryWriter(login.LogInToApp(scan));
                         SubMenuOne.showMenu(scan);
                     } catch (FileNotFoundException e) {
-                        System.out.println("Error: File not found");
+                        System.out.println(Color.RED.getCode() + "Error: File not found" + Color.RESET.getCode());
                     }
                     break;
                 case 2:

@@ -50,7 +50,7 @@ public class PriorityManager {
     }
 
     public static void showMoviesInPriorityOrder(Map<Movie, Integer> moviesWithPriorityPoints) {
-        System.out.println("Your search result: " + "\n" + "\n" + "!! Most accurate result are from top to bottom. !!" + "\n");
+        System.out.println(Color.MAGENTA.getCode() + "Your search result: " + "\n" + "\n" + "!! Most accurate result are from top to bottom. !!" + "\n" + Color.RESET.getCode());
         moviesWithPriorityPoints.entrySet().stream()
                 .sorted((entry1, entry2) -> Integer.compare(entry2.getValue(), entry1.getValue()))
                 .forEach(entry -> System.out.println(entry.getKey()));
