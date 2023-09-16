@@ -17,6 +17,10 @@ public class User {
         this.searchHistoryFile = new File("src/main/resources/userhistory/" + username + ".txt");
     }
 
+    public User() {
+        this.id = UUID.randomUUID();
+    }
+
     public String getUsername() {
         return username;
     }
@@ -39,6 +43,9 @@ public class User {
 
     public void setSearchHistoryFile(final File searchHistoryFile) {
         this.searchHistoryFile = searchHistoryFile;
+    }
+    public void setSearchHistoryFileAfterGetExistUser(String username) {
+        this.searchHistoryFile = new File("src/main/resources/userhistory/" + username + ".txt");
     }
 
     @Override

@@ -31,17 +31,10 @@ public class LoginMenu {
                     } catch (FileNotFoundException e) {
                         System.out.println("Error: File not found");
                     }
-
-                    //TODO implementacja metod do logowania do systemu następnie przejście do reszty menu
-                    //TODO cały kod włącznie z SOUT-em w tym case wyciągniety do zewnętrznej metody
-
-                    //TODO Zamienić var user na metodę logowania
-
-                    //TODO UserHistory.setValuesUserHistoryWriter musi wyłowywać się na koniec metody logowania
-
                     break;
                 case 2:
                     MenuUtils.returning();
+                    Menu.showMenu();
                     break;
                 default:
                     MenuUtils.invalidChoice();

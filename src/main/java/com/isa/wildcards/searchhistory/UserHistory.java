@@ -86,9 +86,8 @@ public class UserHistory {
     }
 
     public static void initializeQueriesList() {
-        if (queriesList == null) {
             queriesList = new LinkedList<>(getExistQueries());
-        }
+
     }
 
     public static User getUser() {

@@ -26,10 +26,12 @@ public class SubMenuOne {
                     Search.searchMovie(scan, true);
                     break;
                 case 2:
+                    UserHistory.initializeQueriesList();
                     UserHistory.show(scan);
                     break;
                 case 3:
                     MenuUtils.returning();
+                    LoginMenu.showMenu(scan);
                     break;
                 default:
                     MenuUtils.invalidChoice();

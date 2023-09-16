@@ -15,6 +15,46 @@
     {
       "username": "any",
       "password": "any"
+    },
+    {
+      "username": "Hello",
+      "password": "Hello"
+    },
+    {
+      "username": "Space",
+      "password": "Space"
+    },
+    {
+      "username": "Hi",
+      "password": "Hi"
+    },
+    {
+      "username": "test1",
+      "password": "test1"
+    },
+    {
+      "username": "Test3",
+      "password": "Test3"
+    },
+    {
+      "username": "Test4",
+      "password": "Test4"
+    },
+    {
+      "username": "testtest",
+      "password": "testtest"
+    },
+    {
+      "username": "test10",
+      "password": "test10"
+    },
+    {
+      "username": "anyUser",
+      "password": "anyUser"
+    },
+    {
+      "username": "bla",
+      "password": "bla"
     }
   ]
 }
