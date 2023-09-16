@@ -18,7 +18,7 @@ public class Login {
     private static final String fileName = "src/main/resources/users.json";
 
     public Login() {
-
+        //empty because of empty
     }
 
     public User LogInToApp(Scanner scan) throws FileNotFoundException {
@@ -38,19 +38,18 @@ public class Login {
                 .findFirst();
 
         if (first.isPresent()) {
-            System.out.println("You logged in as " + first.get().getUsername());
+            System.out.println(Color.YELLOW.getCode() + "You logged in as " + first.get().getUsername() + Color.RESET.getCode());
             User user = first.get();
             user.setSearchHistoryFileAfterGetExistUser(user.getUsername());
             return user;
-            //TODO: menu dla zalogowanych uzytkownikow
         } else {
-            System.out.println("Wrong user. Do you want to create a new user?(Enter 'yes' to create new user)");
+            System.out.println(Color.CYAN.getCode() + "Wrong user. Do you want to create a new user? (Enter 'yes' to create new user)" + Color.RESET.getCode());
             String ans = scanner.nextLine();
             if (ans.equals("yes")) {
-                System.out.println("create new user");
+                System.out.println(Color.YELLOW.getCode() + "Creating new user" + Color.RESET.getCode());
                 return createNewUser();
             }
-            System.out.println("Returning to main menu");
+            System.out.println(Color.YELLOW.getCode() + "Returning to menu" + Color.RESET.getCode());
             LoginMenu.showMenu(scan);
         }return null;
     }
@@ -58,9 +57,9 @@ public class Login {
     public static User createNewUser() {
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter username for new user:");
+        System.out.println(Color.CYAN.getCode() + "Enter new username:" + Color.RESET.getCode());
         String name = scanner.nextLine();
-        System.out.println("Enter password for new user:");
+        System.out.println(Color.CYAN.getCode() + "Enter new password:" + Color.RESET.getCode());
         String password = scanner.nextLine();
 
         User user = new User(name, password);
@@ -70,7 +69,7 @@ public class Login {
         try {
             users = gson.fromJson(new FileReader(fileName), Users.class);
         } catch (FileNotFoundException e) {
-            System.out.println("Error: File not found");
+            System.out.println(Color.RED.getCode() + "Error: File not found" + Color.RESET.getCode());
         }
         Optional<User> sameLogin = users.getUsers()
                 .stream()
@@ -79,7 +78,7 @@ public class Login {
 
         if(sameLogin.isPresent()) {
 
-            System.out.println(sameLogin.get().getUsername() + " already exists!");
+            System.out.println(Color.YELLOW.getCode() + sameLogin.get().getUsername() + " already exists!" + Color.RESET.getCode());
             Menu.showMenu();
             return new User();
         } else {
@@ -87,14 +86,8 @@ public class Login {
             try (FileWriter writer = new FileWriter(fileName)) {
                 gson.toJson(users, writer);
             } catch (IOException e) {
-                System.out.println("Error: File not found");
+                System.out.println(Color.RED.getCode() + "Error: File not found" + Color.RESET.getCode());
             }return user;
         }
-
-//        try (FileWriter writer = new FileWriter(fileName)) {
-//            gson.toJson(users, writer);
-//        } catch (IOException e) {
-//            System.out.println("Error: File not found");
-//        }return user;
     }
 }
