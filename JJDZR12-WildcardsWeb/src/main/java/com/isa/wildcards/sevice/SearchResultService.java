@@ -20,7 +20,7 @@ public class SearchResultService {
         this.moviesSearchResultMapper = moviesSearchResultMapper;
     }
 
-    public List<MovieDto> findMoviesBySearchQuery(String searchQuery){
+    public List<MovieDto> findMoviesBySearchQuery(String searchQuery) {
         var movieList = repository.findAll();
         Map<Movie, Integer> foundMovies = SearchEngine.findMovies(movieList, searchQuery);
         return moviesSearchResultMapper.toMoviesDto(foundMovies);

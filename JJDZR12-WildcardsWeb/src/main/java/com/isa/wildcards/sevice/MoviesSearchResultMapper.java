@@ -4,7 +4,6 @@ import com.isa.wildcards.dto.MovieDto;
 import com.isa.wildcards.entity.Movie;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,13 +19,15 @@ public class MoviesSearchResultMapper {
 
         List<MovieDto> movieDtoList = sortedResults.stream().map(movie -> {
             MovieDto movieDto = new MovieDto();
-            movieDto.setId(movie.getId());
+            movieDto.setUuid(movie.getUuid());
             movieDto.setTitle(movie.getTitle());
             movieDto.setYear(movie.getYear());
             movieDto.setRated(movie.getRated());
             movieDto.setReleased(movie.getReleased());
             movieDto.setRuntime(movie.getRuntime());
             movieDto.setGenre(movie.getGenre());
+            movieDto.setActors(movie.getActors());
+            movieDto.setMetascore(movie.getMetascore());
             movieDto.setDirector(movie.getDirector());
             movieDto.setWriter(movie.getWriter());
             movieDto.setPlot(movie.getPlot());

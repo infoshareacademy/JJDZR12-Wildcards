@@ -67,7 +67,7 @@
 <div class="container results-container">
     <ul class="list-group results-list">
         <li th:each="field : ${resultListModel}" class="list-group-item results-list-item">
-            <a th:href="@{'/details/' + ${field.getId()}}">
+            <a th:href="@{'/details/' + ${field.getUuid()}}">
                 <span th:text="${field.getTitle() + ':  ' + field.getPlot()}"></span>
             </a>
         </li>

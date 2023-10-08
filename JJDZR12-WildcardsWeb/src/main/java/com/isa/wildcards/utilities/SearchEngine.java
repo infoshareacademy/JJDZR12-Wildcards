@@ -6,6 +6,7 @@ import lombok.experimental.UtilityClass;
 import java.util.*;
 
 import static java.util.stream.Collectors.toSet;
+
 @UtilityClass
 public class SearchEngine {
 

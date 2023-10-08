@@ -13,6 +13,8 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String uuid;
+
     private String title;
 
     private String year;
@@ -40,6 +42,4 @@ public class Movie {
     private String awards;
 
     private String metascore;
-
-
-    }
+}

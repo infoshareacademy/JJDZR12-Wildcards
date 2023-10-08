@@ -29,10 +29,10 @@ public class SearchPageController {
         return "search-result-page";
     }
 
-    @GetMapping("details/{id}")
-    public String showSearchResultDetails(@PathVariable Long id, Model model){
+    @GetMapping("details/{uuid}")
+    public String showSearchResultDetails(@PathVariable String uuid, Model model) {
         List<MovieDto> searchResultDto = (List<MovieDto>) model.getAttribute("resultListModel");
-        model.addAttribute("selectedResult", searchResultDto.stream().filter(e->e.getId().equals(id)).findFirst().get());
+        model.addAttribute("selectedResult", searchResultDto.stream().filter(e -> e.getUuid().equals(uuid)).findFirst().get());
         return "selected-result-page";
     }
 }
