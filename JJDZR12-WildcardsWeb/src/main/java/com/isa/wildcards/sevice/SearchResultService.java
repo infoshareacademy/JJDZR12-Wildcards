@@ -24,7 +24,8 @@ public class SearchResultService {
     }
 
     public MovieDto getSearchSelectedResult(List<MovieDto> searchResultDto, UUID uuid) {
-       return searchResultDto.stream().filter(e -> e.getUuid().equals(uuid))
+       return searchResultDto.stream()
+               .filter(e -> e.getUuid().equals(uuid))
                .findFirst()
                .orElseGet(MovieDto::new);
     }

@@ -10,5 +10,5 @@ import java.util.UUID;
 @Setter
 @Getter
 public class AbstractUuidEntity extends AbstractEntity {
-    private UUID Uuid = UUID.randomUUID();
+    private UUID uuid = UUID.randomUUID();
 }
