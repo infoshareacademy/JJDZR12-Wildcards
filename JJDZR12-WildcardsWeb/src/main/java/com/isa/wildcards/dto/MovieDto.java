@@ -3,11 +3,13 @@ package com.isa.wildcards.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Setter
 @Getter
 public class MovieDto {
 
-    private String uuid;
+    private UUID uuid;
 
     private String title;
 

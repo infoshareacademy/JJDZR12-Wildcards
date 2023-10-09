@@ -11,13 +11,18 @@ import java.util.stream.Collectors;
 @Component
 public class MoviesSearchResultMapper {
     public List<MovieDto> toMoviesDto(final Map<Movie, Integer> foundMoviesWithPriority) {
+
         List<Movie> sortedResults = foundMoviesWithPriority.entrySet()
                 .stream()
                 .sorted(Map.Entry.<Movie, Integer>comparingByValue().reversed())
                 .map(Map.Entry::getKey)
                 .toList();
 
-        List<MovieDto> movieDtoList = sortedResults.stream().map(movie -> {
+        return mapToDto(sortedResults);
+    }
+
+    private List<MovieDto> mapToDto(List<Movie> sortedMovies) {
+        return sortedMovies.stream().map(movie -> {
             MovieDto movieDto = new MovieDto();
             movieDto.setUuid(movie.getUuid());
             movieDto.setTitle(movie.getTitle());
@@ -35,8 +40,7 @@ public class MoviesSearchResultMapper {
             movieDto.setCountry(movie.getCountry());
             movieDto.setAwards(movie.getAwards());
             return movieDto;
-        }).collect(Collectors.toList());
-
-        return movieDtoList;
+        }).toList();
     }
+
 }

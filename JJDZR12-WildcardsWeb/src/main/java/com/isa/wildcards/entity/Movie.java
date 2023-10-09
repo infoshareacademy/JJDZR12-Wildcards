@@ -7,13 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "movies")
-public class Movie {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String uuid;
+@Table(name = "movie")
+public class Movie extends AbstractUuidEntity{
 
     private String title;
 

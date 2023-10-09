@@ -10,8 +10,10 @@ import static java.util.stream.Collectors.toSet;
 @UtilityClass
 public class SearchEngine {
 
+    private static final String SPLITTER = "(?![^\\p{L}0-9']+)(?i)(?!the|a)[^\\p{L}0-9']+";
+
     public static Map<Movie, Integer> findMovies(List<Movie> movies, String searchQuery) {
-        Set<String> keywords = Arrays.stream(searchQuery.split("(?![^\\p{L}0-9']+)(?i)(?!the|a)[^\\p{L}0-9']+")).collect(toSet());
+        Set<String> keywords = Arrays.stream(searchQuery.split(SPLITTER)).collect(toSet());
 
         Map<Movie, Integer> moviePriorityMap = new HashMap<>();
 
@@ -56,7 +58,7 @@ public class SearchEngine {
     }
 
     public static Set<String> getKeyWords(String searchQuery) {
-        String[] keyWordsArray = searchQuery.split("(?![^\\p{L}0-9']+)(?i)(?!the|a)[^\\p{L}0-9']+");
+        String[] keyWordsArray = searchQuery.split(SPLITTER);
         return new HashSet<>(Arrays.asList(keyWordsArray));
     }
 

@@ -12,7 +12,7 @@ public class Search {
 
     private static List<Movie> fromJsonIntoMovieObjectsCollection() {
 
-        String filePath = "src/main/resources/database.json";
+        String filePath = "JJDZR12-WildcardsConsole/src/main/resources/database.json";
         try {
             return readJsonFile(filePath);
         } catch (IOException e) {
