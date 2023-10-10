@@ -8,20 +8,23 @@ body, html {
     background-color: #202124;
 }
 
+
 body::-webkit-scrollbar {
     width: 10px;
 }
 
+
 body::-webkit-scrollbar-track {
     background: #202124;
 }
+
 
 body::-webkit-scrollbar-thumb {
     background-color: #3c3e44;
     border-radius: 5px;
 }
 
-/* Style for the top bar */
+
 .top-bar {
     background-color: #202124;
     padding: 10px;
@@ -29,7 +32,7 @@ body::-webkit-scrollbar-thumb {
     justify-content: flex-end;
 }
 
-/* Style for the login button */
+
 .login-button {
     background-color: #4285f4;
     color: #fff;
@@ -43,27 +46,28 @@ body::-webkit-scrollbar-thumb {
     transition: background-color 0.3s;
 }
 
+
 .login-button:hover {
     background-color: #357ae8;
 }
 
-/* Style for the logo container */
+
 .logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 220px; /* Adjust the margin to your preference */
+    margin-top: 220px;
     padding-bottom: 10px;
 }
 
-/* Style for the logo */
+
 .logo {
     font-size: 70px;
     color: #fff;
     font-weight: bold;
 }
 
-/* Style for the search container */
+
 .search-container {
     display: flex;
     flex-direction: column;
@@ -73,14 +77,14 @@ body::-webkit-scrollbar-thumb {
     background-color: #202124;
 }
 
-/* Style for the search bar */
+
 .search-bar {
     display: flex;
     background-color: #333;
     border-radius: 24px;
 }
 
-/* Style for the search label */
+
 .search-label {
     border: none;
     outline: none;
@@ -93,7 +97,7 @@ body::-webkit-scrollbar-thumb {
     text-align: left;
 }
 
-/* Style for the search button */
+
 .search-button {
     background-color: #4285f4;
     color: #fff;
@@ -107,54 +111,55 @@ body::-webkit-scrollbar-thumb {
     transition: background-color 0.3s;
 }
 
+
 .search-button:hover {
     background-color: #357ae8;
 }
 
-/* Style for the container center */
+
 .container-center {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 40vh; /* Minimum height to center vertically */
+    min-height: 40vh;
     margin: 0;
 }
 
-/* Style for the search results box */
+
 .search-results {
     background-color: #333;
     border-radius: 24px;
-    padding: 20px; /* Add padding for spacing inside the box */
-    max-width: 80%; /* Set a maximum width for the box */
-    overflow: auto; /* Enable vertical scrolling if content overflows */
+    padding: 20px;
+    max-width: 80%;
+    overflow: auto;
     margin-bottom: 20px;
 }
 
-/* Style for the result list */
+
 .result-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
+
 .result-list li {
-    padding: 10px; /* Padding for list items */
+
 }
 
-/* Style for the last list item to remove the bottom border */
+
 .result-list li:last-child {
     border-bottom: none;
 }
 
 
-/* Style for each search item */
 .search-item {
-    margin-bottom: 10px; /* Adjust the margin to your preference */
+    margin-bottom: 10px;
     color: #fff;
 }
 
-/* Style for the footer */
+
 .foot {
     background-color: #1f1e1e;
     color: #fff;
@@ -165,13 +170,13 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
 }
 
-/* Style for footer links */
+
 .foot {
     background-color: #1f1e1e;
     color: #fff;
     text-align: center;
     padding: 10px 0;
     width: 100%;
-    position: fixed; /* Fixed positioning for the footer */
+    position: fixed;
     bottom: 0;
 }

@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>WildSearch</title>
-    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"/>
-</head>
-
+<head th:replace="~{fragment::head}"></head>
 <body>
 
 <div class="top-bar">
@@ -25,7 +16,8 @@
 <form th:action="@{/}" method="post">
     <div class="search-container">
         <div class="search-bar">
-            <input class="search-label" type="text" id="searchQuery" name="searchQuery" placeholder="What you want to search?">
+            <input class="search-label" type="text" id="searchQuery" name="searchQuery"
+                   placeholder="What you want to search?">
         </div>
         <button class="search-button" type="submit">Search</button>
     </div>
@@ -34,7 +26,6 @@
 <div class="container-center">
     <div class="search-results">
         <ul class="result-list">
-            <!-- Your Thymeleaf loop to display search results here -->
             <li th:each="field : ${resultListModel}" class="search-item">
                 <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: white;">
                     <span th:text="${field.getTitle()}"></span>
@@ -46,11 +37,7 @@
     </div>
 </div>
 
-<footer class="foot">
-    <p>&copy; 2023 Wilcards ISA project. All rights reserved.</p>
-    <p>Contact: <a href="mailto:contact@example.com">contact@example.com</a></p>
-</footer>
-
+<footer th:replace="~{fragment::footer}"></footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
