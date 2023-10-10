@@ -14,18 +14,16 @@ body::-webkit-scrollbar {
     width: 10px;
 }
 
-
 body::-webkit-scrollbar-track {
     background: #202124;
 }
-
 
 body::-webkit-scrollbar-thumb {
     background-color: #3c3e44;
     border-radius: 5px;
 }
 
-
+/* Style for the top bar */
 .top-bar {
     background-color: #202124;
     padding: 10px;
@@ -33,7 +31,7 @@ body::-webkit-scrollbar-thumb {
     justify-content: flex-end;
 }
 
-
+/* Style for the login button */
 #login-button {
     background-color: #4285f4;
     color: #fff;
@@ -47,12 +45,27 @@ body::-webkit-scrollbar-thumb {
     transition: background-color 0.3s;
 }
 
-
 #login-button:hover {
     background-color: #357ae8;
 }
 
+/* Style for the logo container */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px; /* Adjust the margin to your preference */
+    padding-bottom: 20px;
+}
 
+/* Style for the logo */
+.logo {
+    font-size: 70px;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Style for the search container */
 .search-container {
     display: flex;
     flex-direction: column;
@@ -60,33 +73,16 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     margin-top: 20px;
     background-color: #202124;
-    color: #fff;
 }
 
-
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 250px;
-    padding-bottom: 0px;
-}
-
-.logo {
-    font-size: 70px;
-    color: #fff;
-    font-weight: bold;
-}
-
+/* Style for the search bar */
 .search-bar {
     display: flex;
-    flex-direction: column;
     background-color: #333;
-    padding: 2px 50px;
     border-radius: 24px;
 }
 
-
+/* Style for the search label */
 .search-label {
     border: none;
     outline: none;
@@ -99,7 +95,7 @@ body::-webkit-scrollbar-thumb {
     text-align: left;
 }
 
-
+/* Style for the search button */
 .search-button {
     background-color: #4285f4;
     color: #fff;
@@ -113,11 +109,41 @@ body::-webkit-scrollbar-thumb {
     transition: background-color 0.3s;
 }
 
-
 .search-button:hover {
     background-color: #357ae8;
 }
 
+/* Style for the container center */
+.container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Minimum height to center vertically */
+    background-color: #202124;
+    margin: 0;
+}
+
+/* Style for the search results box */
+.search-results {
+    background-color: #202124;
+    padding: 20px; /* Add padding for spacing inside the box */
+    max-width: 80%; /* Set a maximum width for the box */
+    overflow: auto; /* Enable vertical scrolling if content overflows */
+}
+
+/* Style for the result list */
+.result-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style for each search item */
+.search-item {
+    margin-bottom: 20px; /* Adjust the margin to your preference */
+}
+
+/* Style for the footer */
 .foot {
     background-color: #1f1e1e;
     color: #fff;
@@ -129,9 +155,12 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* Style for footer links */
-.foot a {
-    color: #4285f4;
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s;
+.foot {
+    background-color: #1f1e1e;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed; /* Fixed positioning for the footer */
+    bottom: 0;
 }
