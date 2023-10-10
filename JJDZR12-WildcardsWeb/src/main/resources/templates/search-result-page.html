@@ -34,7 +34,7 @@
         <ul class="result-list">
             <!-- Your Thymeleaf loop to display search results here -->
             <li th:each="field : ${resultListModel}" class="search-item">
-                <a th:href="@{'/details/' + ${field.getUuid()}}">
+                <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: white;">
                     <span th:text="${field.getTitle()}"></span>
                 </a>
                 <br>

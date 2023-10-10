@@ -5,8 +5,7 @@ body, html {
     overflow-y: scroll;
     scrollbar-width: thin;
     scrollbar-color: #4285f4 transparent;
-    position: relative;
-    height: 100vh;
+
     background-color: #202124;
 }
 
@@ -54,8 +53,8 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px; /* Adjust the margin to your preference */
-    padding-bottom: 20px;
+    margin-top: 220px; /* Adjust the margin to your preference */
+    padding-bottom: 10px;
 }
 
 /* Style for the logo */
@@ -71,7 +70,7 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: #202124;
 }
 
@@ -116,19 +115,21 @@ body::-webkit-scrollbar-thumb {
 /* Style for the container center */
 .container-center {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 70vh; /* Minimum height to center vertically */
-    background-color: #202124;
+    min-height: 40vh; /* Minimum height to center vertically */
     margin: 0;
 }
 
 /* Style for the search results box */
 .search-results {
-    background-color: #202124;
+    background-color: #333;
+    border-radius: 24px;
     padding: 20px; /* Add padding for spacing inside the box */
     max-width: 80%; /* Set a maximum width for the box */
     overflow: auto; /* Enable vertical scrolling if content overflows */
+    margin-bottom: 20px;
 }
 
 /* Style for the result list */
@@ -138,9 +139,20 @@ body::-webkit-scrollbar-thumb {
     margin: 0;
 }
 
+.result-list li {
+    padding: 10px; /* Padding for list items */
+}
+
+/* Style for the last list item to remove the bottom border */
+.result-list li:last-child {
+    border-bottom: none;
+}
+
+
 /* Style for each search item */
 .search-item {
-    margin-bottom: 20px; /* Adjust the margin to your preference */
+    margin-bottom: 10px; /* Adjust the margin to your preference */
+    color: #fff;
 }
 
 /* Style for the footer */

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>WildSearch</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"/>
+</head>
+
+<body>
+
+<div class="top-bar">
+    <a href="logowanie.html" id="login-button">User</a>
+</div>
+
+<div class="container-center">
+    <div class="search-results">
+        <p class ="search-item">Title: <span th:text="${selectedResult.title}"></span></p>
+        <p class ="search-item">Year: <span th:text="${selectedResult.year}"></span></p>
+        <p class ="search-item">Rated: <span th:text="${selectedResult.rated}"></span></p>
+        <p class ="search-item">Released: <span th:text="${selectedResult.released}"></span></p>
+        <p class ="search-item">Runtime: <span th:text="${selectedResult.runtime}"></span></p>
+        <p class ="search-item">Genre: <span th:text="${selectedResult.genre}"></span></p>
+        <p class ="search-item">Director: <span th:text="${selectedResult.director}"></span></p>
+        <p class ="search-item">Writer: <span th:text="${selectedResult.writer}"></span></p>
+        <p class ="search-item">Actors: <span th:text="${selectedResult.actors}"></span></p>
+        <p class ="search-item">Language: <span th:text="${selectedResult.language}"></span></p>
+        <p class ="search-item">Country: <span th:text="${selectedResult.country}"></span></p>
+        <p class ="search-item">Awards: <span th:text="${selectedResult.awards}"></span></p>
+        <p class ="search-item">Metascore: <span th:text="${selectedResult.metascore}"></span></p>
+        <p class ="search-item">Plot: <span th:text="${selectedResult.plot}"></span></p>
+    </div>
+
+    <div class="centered-bar">
+        <a th:href="@{/}" class="search-button">
+            <button class="search-button" type="button">Back</button>
+        </a>
+    </div>
+
+</div>
+
+<footer class="foot">
+    <p>&copy; 2023 Wilcards ISA project. All rights reserved.</p>
+    <p>Contact: <a href="mailto:contact@example.com">contact@example.com</a></p>
+</footer>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
