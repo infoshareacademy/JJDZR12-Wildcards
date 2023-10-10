@@ -37,4 +37,9 @@ public class SearchPageController {
         model.addAttribute("selectedResult", movieDto);
         return "selected-result-page";
     }
+
+    @GetMapping("/user")
+    public String getMainUserPage() {
+        return "user-main-page";
+    }
 }
