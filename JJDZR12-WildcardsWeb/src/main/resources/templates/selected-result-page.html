@@ -1,97 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>WildSearch</title>
-
-    <!-- Bootstrap CSS -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-
-    <style>
-        .field-container {
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-
-        .field-name {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .field-value {
-            color: #666;
-        }
-    </style>
-</head>
+<head th:replace="~{fragment::head}"></head>
 <body>
-<div class="container">
 
-    <h1 class="text-center">Search Result</h1>
+<div class="top-bar">
+    <a th:href="@{/user}">
+        <button class="login-button" type="button">User</button>
+    </a>
+</div>
 
-    <div class="field-container">
-        <div class="field-name">Title:</div>
-        <div class="field-value" th:text="${selectedResult.getTitle()}"></div>
+<div class="container-center">
+    <div class="search-results">
+        <p class="search-item">Title: <span th:text="${selectedResult.title}"></span></p>
+        <p class="search-item">Year: <span th:text="${selectedResult.year}"></span></p>
+        <p class="search-item">Rated: <span th:text="${selectedResult.rated}"></span></p>
+        <p class="search-item">Released: <span th:text="${selectedResult.released}"></span></p>
+        <p class="search-item">Runtime: <span th:text="${selectedResult.runtime}"></span></p>
+        <p class="search-item">Genre: <span th:text="${selectedResult.genre}"></span></p>
+        <p class="search-item">Director: <span th:text="${selectedResult.director}"></span></p>
+        <p class="search-item">Writer: <span th:text="${selectedResult.writer}"></span></p>
+        <p class="search-item">Actors: <span th:text="${selectedResult.actors}"></span></p>
+        <p class="search-item">Language: <span th:text="${selectedResult.language}"></span></p>
+        <p class="search-item">Country: <span th:text="${selectedResult.country}"></span></p>
+        <p class="search-item">Awards: <span th:text="${selectedResult.awards}"></span></p>
+        <p class="search-item">Metascore: <span th:text="${selectedResult.metascore}"></span></p>
+        <p class="search-item">Plot: <span th:text="${selectedResult.plot}"></span></p>
     </div>
-    <div class="field-container">
-        <div class="field-name">Year:</div>
-        <div class="field-value" th:text="${selectedResult.getYear()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Rated:</div>
-        <div class="field-value" th:text="${selectedResult.getRated()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Released:</div>
-        <div class="field-value" th:text="${selectedResult.getReleased()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Runtime:</div>
-        <div class="field-value" th:text="${selectedResult.getRuntime()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Genre:</div>
-        <div class="field-value" th:text="${selectedResult.getGenre()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Director:</div>
-        <div class="field-value" th:text="${selectedResult.getDirector()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Writer:</div>
-        <div class="field-value" th:text="${selectedResult.getWriter()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Actors:</div>
-        <div class="field-value" th:text="${selectedResult.getActors()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Plot:</div>
-        <div class="field-value" th:text="${selectedResult.getPlot()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Language:</div>
-        <div class="field-value" th:text="${selectedResult.getLanguage()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Country:</div>
-        <div class="field-value" th:text="${selectedResult.getCountry()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Awards:</div>
-        <div class="field-value" th:text="${selectedResult.getAwards()}"></div>
-    </div>
-    <div class="field-container">
-        <div class="field-name">Metascore:</div>
-        <div class="field-value" th:text="${selectedResult.getMetascore()}"></div>
+
+    <div class="centered-bar">
+        <a th:href="@{/}" class="search-button">
+            <button class="search-button" type="button">Back</button>
+        </a>
     </div>
 
 </div>
 
-<!-- Bootstrap core JS -->
+<footer th:replace="~{fragment::footer}"></footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

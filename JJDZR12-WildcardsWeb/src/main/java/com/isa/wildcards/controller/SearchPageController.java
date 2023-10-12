@@ -2,7 +2,6 @@ package com.isa.wildcards.controller;
 
 import com.isa.wildcards.dto.MovieDto;
 import com.isa.wildcards.sevice.SearchResultService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,3 +37,5 @@ public class SearchPageController {
         return "selected-result-page";
     }
 }
+
+

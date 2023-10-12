@@ -1,57 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>WildSearch</title>
-    <!-- Bootstrap CSS -->
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"/>
-
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .custom-header {
-            font-size: 8rem;
-            color: #ad0666;
-            text-align: center;
-            font-weight: bold;
-            margin-bottom: 20px;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .form-container {
-            width: 100%;
-            margin-bottom: 300px;
-        }
-
-    </style>
-
-</head>
+<head th:replace="~{fragment::head}"></head>
 <body>
-<div class="container form-container">
-    <div class="row mt-5">
-        <div class="col-md-6 offset-md-3">
-            <h1 class="custom-header">WildSearch</h1>
-            <form method="post" action="/">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="searchQuery" placeholder="Search"/>
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">Search</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+
+<div class="top-bar">
+    <a th:href="@{/user}">
+        <button class="login-button" type="button">User</button>
+    </a>
 </div>
-<!-- Bootstrap core JS -->
+
+<div class="logo-container">
+    <span class="logo">WildSearch</span>
+</div>
+
+<form th:action="@{/}" method="post">
+    <div class="search-container">
+        <div class="search-bar">
+            <input class="search-label" type="text" id="searchQuery" name="searchQuery"
+                   placeholder="What you want to search?">
+        </div>
+        <button class="search-button" type="submit">Search</button>
+    </div>
+</form>
+
+<footer th:replace="~{fragment::footer}"></footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
