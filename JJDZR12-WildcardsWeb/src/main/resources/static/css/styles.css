@@ -101,7 +101,7 @@ body::-webkit-scrollbar-thumb {
     padding: 12px 16px;
     font-size: 16px;
     background-color: transparent;
-    color: #fff;
+    color: #999;
     width: 400px;
     max-width: 80%;
     text-align: left;
@@ -110,7 +110,7 @@ body::-webkit-scrollbar-thumb {
 
 .search-button {
     background-color: #4285f4;
-    color: #fff;
+    color: #999;
     border: none;
     border-radius: 24px;
     padding: 15px 16px;
@@ -166,13 +166,13 @@ body::-webkit-scrollbar-thumb {
 
 .search-item {
     margin-bottom: 10px;
-    color: #fff;
+    color: #999;
 }
 
 
 .foot {
     background-color: #1f1e1e;
-    color: #fff;
+    color: #999;
     text-align: center;
     padding: 10px 0;
     position: absolute;
@@ -183,7 +183,7 @@ body::-webkit-scrollbar-thumb {
 
 .foot {
     background-color: #1f1e1e;
-    color: #fff;
+    color: #999;
     text-align: center;
     padding: 10px 0;
     width: 100%;
@@ -191,7 +191,8 @@ body::-webkit-scrollbar-thumb {
     bottom: 0;
 }
 
-.gsc-control-cse {
+
+.gsc-control-searchbox-only {
     background-color: #333 !important;
     border: 0 !important;
     padding: 10px 15px 10px 15px !important;
@@ -210,26 +211,27 @@ table.gsc-search-box {
 }
 .gcse-search-box-tools .gcse-search-box .gcse-input {
     padding-right: 0 !important;
+    color: #999 !important;
 }
 #gs_tti50 {
     padding: 6px 0 !important;
     background: #333 !important;
 }
 #gsc-i-id1 {
-    color: #000 !important;
+    color: #999 !important;
     text-indent: 0 !important;
     font-size: 14px !important;
     line-height: 1 !important;
     background: none !important;
 }
 #gsc-i-id1::-webkit-input-placeholder {
-    color: #999; /* Change the color to your preferred placeholder color */
-    font-style: italic; /* Add italic style */
-    font-weight: 300; /* Adjust font weight as desired */
-    font-size: 14px; /* Adjust font size as desired */
+    color: #999;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
 }
 #gsc-i-id1::-moz-placeholder {
-    color: #333 !important;
+    color: #999 !important;
     opacity: 1 !important;
 }
 .gsib_b {
@@ -242,9 +244,15 @@ table.gsc-search-box {
     outline: none !important;
     border: 0 !important;
     cursor: pointer !important;
-    background-color: #357ae8 !important; /* Change this to your preferred color */
+    background-color: #4285f4 !important;
+    transition: background-color 0.3s !important;
 }
+
 .gsc-search-button-v2:focus {
     outline: none !important;
     box-shadow: none !important;
+}
+
+.gsc-search-button-v2:hover {
+    background-color: #357ae8 !important;
 }
