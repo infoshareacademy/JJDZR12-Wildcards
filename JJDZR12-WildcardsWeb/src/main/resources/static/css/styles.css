@@ -73,7 +73,17 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 20px;
+    background-color: #202124;
+}
+
+
+.google-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
     background-color: #202124;
 }
 
@@ -179,4 +189,62 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     position: fixed;
     bottom: 0;
+}
+
+.gsc-control-cse {
+    background-color: #333 !important;
+    border: 0 !important;
+    padding: 10px 15px 10px 15px !important;
+    margin: 0 !important;
+    border-radius: 40px !important;
+    overflow: hidden !important;
+    width: 400px !important;
+}
+form.gsc-search-box,
+table.gsc-search-box {
+    margin-bottom: 0 !important;
+}
+.gcse-search-box {
+    border: 0 !important;
+    background: #333 !important;
+}
+.gcse-search-box-tools .gcse-search-box .gcse-input {
+    padding-right: 0 !important;
+}
+#gs_tti50 {
+    padding: 6px 0 !important;
+    background: #333 !important;
+}
+#gsc-i-id1 {
+    color: #000 !important;
+    text-indent: 0 !important;
+    font-size: 14px !important;
+    line-height: 1 !important;
+    background: none !important;
+}
+#gsc-i-id1::-webkit-input-placeholder {
+    color: #999; /* Change the color to your preferred placeholder color */
+    font-style: italic; /* Add italic style */
+    font-weight: 300; /* Adjust font weight as desired */
+    font-size: 14px; /* Adjust font size as desired */
+}
+#gsc-i-id1::-moz-placeholder {
+    color: #333 !important;
+    opacity: 1 !important;
+}
+.gsib_b {
+    display: none !important;
+}
+.gsc-search-button-v2 {
+    padding: 10px 10px !important;
+    border-radius: 20px !important;
+    margin-left: 0 !important;
+    outline: none !important;
+    border: 0 !important;
+    cursor: pointer !important;
+    background-color: #357ae8 !important; /* Change this to your preferred color */
+}
+.gsc-search-button-v2:focus {
+    outline: none !important;
+    box-shadow: none !important;
 }
