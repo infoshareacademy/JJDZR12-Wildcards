@@ -21,6 +21,7 @@ public class SearchPageController {
     public String getMainSearchPage() {
         return "main-search-page";
     }
+
     @GetMapping("/offline")
     public String getMainSearchPageOffline(Model model) {
         model.addAttribute("resultListModel", null);
