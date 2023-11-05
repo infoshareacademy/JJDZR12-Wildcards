@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment::head}"></head>
+<body class="body-user">
+<div class="centered-container">
+    <p class="prompt">User registration form</p>
+    <div class="centered-bar">
+        <form th:action="@{/addUser}" method="post">
+                    <div class="search-bar">
+                        <input class="search-label" type="text" id="userName" name="userName"
+                               placeholder="Login">
+                    </div>
+                    <div class="search-bar">
+                        <input class="search-label" type="text" id="password" name="password"
+                               placeholder="Password">
+                    </div>
+
+                    <div class="centered-bar">
+                    <button class="search-button" type="submit" >Submit</button>
+                    </div>
+        </form>
+        <div class="centered-bar">
+            <a th:href="@{/}" class="search-button">
+                <button class="search-button-btn" type="button">Back</button>
+            </a>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{fragment::footer}"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

@@ -97,7 +97,6 @@ body::-webkit-scrollbar-thumb {
     text-align: left;
 }
 
-
 .search-button {
     background-color: #4285f4;
     color: #fff;
@@ -183,10 +182,22 @@ body::-webkit-scrollbar-thumb {
 
 .centered-container {
     text-align: center;
-    border: 5px solid white;
+    border: transparent;
     padding: 20px;
     max-width: 400px;
     width: 100%;
+    border-radius: 24px;
+    background-color: #333;
+}
+
+.centered-container-registration {
+    text-align: center;
+    border: transparent;
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 24px;
+    background-color: #333;
 }
 
 .prompt {
@@ -208,12 +219,11 @@ body::-webkit-scrollbar-thumb {
     transition: background-color 0.3s;
 }
 .body-user {
-    background-color: #333;
+    background-color: #202124;
     margin: 0;
     padding: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 24px;
 }
