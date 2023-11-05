@@ -14,7 +14,7 @@
 </div>
 
 <div class="google-search">
-    <div class="gcse-searchbox-only"></div>
+    <div class="gcse-search"></div>
 </div>
 
 <footer th:replace="~{fragment::footer}"></footer>
@@ -22,19 +22,19 @@
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 <script>
     (function () {
-        var cx = '34edd376404af4e39';
-        var gcse = document.createElement('script');
+        const googleid = '34edd376404af4e39';
+        const gcse = document.createElement('script');
         gcse.type = 'text/javascript';
         gcse.async = true;
-        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + cx;
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(gcse, s);
+        gcse.src = (document.location.protocol === 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + googleid;
+        const script = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, script);
     })();
 
     window.onload = function () {
-        var title = "Type to search...";
-        var textBox = document.querySelector("#gsc-i-id1");
-        var button = document.querySelector(".gsc-search-button-v2 svg title");
+        const title = "Type to search...";
+        const textBox = document.querySelector("#gsc-i-id1");
+        const button = document.querySelector(".gsc-search-button-v2 svg title");
         textBox.placeholder = title;
         textBox.title = title;
         button.innerHTML = title;

@@ -192,31 +192,42 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-.gsc-control-searchbox-only {
+.gsc-control-cse {
     background-color: #333 !important;
     border: 0 !important;
-    padding: 10px 15px 10px 15px !important;
+    padding: 10px 15px !important;
     margin: 0 !important;
     border-radius: 40px !important;
     overflow: hidden !important;
-    width: 400px !important;
+    width: 1000px !important;
+    display: flex !important;
 }
+
+
 form.gsc-search-box,
 table.gsc-search-box {
     margin-bottom: 0 !important;
 }
+
+
 .gcse-search-box {
     border: 0 !important;
     background: #333 !important;
 }
+
+
 .gcse-search-box-tools .gcse-search-box .gcse-input {
     padding-right: 0 !important;
     color: #999 !important;
 }
+
+
 #gs_tti50 {
     padding: 6px 0 !important;
     background: #333 !important;
 }
+
+
 #gsc-i-id1 {
     color: #999 !important;
     text-indent: 0 !important;
@@ -224,21 +235,28 @@ table.gsc-search-box {
     line-height: 1 !important;
     background: none !important;
 }
+
+
 #gsc-i-id1::-webkit-input-placeholder {
     color: #999;
     font-style: italic;
     font-weight: 300;
     font-size: 14px;
 }
+
+
 #gsc-i-id1::-moz-placeholder {
     color: #999 !important;
     opacity: 1 !important;
 }
+
+
 .gsib_b {
     display: none !important;
 }
+
 .gsc-search-button-v2 {
-    padding: 10px 10px !important;
+    padding: 10px !important;
     border-radius: 20px !important;
     margin-left: 0 !important;
     outline: none !important;
@@ -248,10 +266,12 @@ table.gsc-search-box {
     transition: background-color 0.3s !important;
 }
 
+
 .gsc-search-button-v2:focus {
     outline: none !important;
     box-shadow: none !important;
 }
+
 
 .gsc-search-button-v2:hover {
     background-color: #357ae8 !important;
