@@ -218,14 +218,24 @@ body::-webkit-scrollbar-thumb {
 }
 
 
+.container-center-offline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+
 .search-results {
     background-color: #333;
     padding: 20px;
-    max-width: 80%;
     overflow: auto;
     margin-bottom: 20px;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
+    width: 932px;
+    max-width: 100%;
 
 }
 
