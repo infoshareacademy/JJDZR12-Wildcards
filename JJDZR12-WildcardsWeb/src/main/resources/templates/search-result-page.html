@@ -37,8 +37,8 @@
     <div class="search-results" th:if="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
         <ul class="result-list">
             <li th:each="field : ${resultListModel}" class="search-item">
-                <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: white;">
-                    <span th:text="${field.getTitle()}"></span>
+                <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: blue">
+                    <span th:text="${field.getTitle()}" style="color: blue"></span>
                 </a>
                 <br>
                 <span th:text="${field.getPlot()}"></span>
