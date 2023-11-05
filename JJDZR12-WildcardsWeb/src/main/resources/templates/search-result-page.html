@@ -34,8 +34,8 @@
 </form>
 
 <div class="container-center">
-    <div class="search-results" th:if="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
-        <ul class="result-list">
+    <div class="search-results">
+        <ul class="result-list" th:if="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
             <li th:each="field : ${resultListModel}" class="search-item">
                 <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: #357ae8; text-decoration: none;">
                     <span th:text="${field.getTitle()}" style="color: #357ae8"></span>
@@ -44,9 +44,7 @@
                 <span th:text="${field.getPlot()}"></span>
             </li>
         </ul>
-    </div>
-    <div th:unless="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
-        <p>No results found</p>
+        <p th:unless="${resultListModel != null and not #lists.isEmpty(resultListModel)}" style="color: white">No results found</p>
     </div>
 </div>
 <footer th:replace="~{fragment::footer}"></footer>
