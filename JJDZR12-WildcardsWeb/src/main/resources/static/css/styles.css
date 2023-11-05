@@ -60,6 +60,33 @@ body::-webkit-scrollbar-thumb {
     padding-bottom: 10px;
 }
 
+.button-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #202124;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.online-button, .offline-button {
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 15px 16px;
+    cursor: pointer;
+    width: 150px;
+    max-width: 60%;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.online-button:hover, .offline-button:hover {
+    background-color: #357ae8;
+}
+
 
 .logo {
     font-size: 70px;

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment::head}"></head>
+<body>
+
+<div class="top-bar">
+    <a th:href="@{/user}">
+        <button class="login-button" type="button">User</button>
+    </a>
+</div>
+
+<div class="button-container">
+    <a th:href="@{/}">
+        <button class="online-button" type="button">Online</button>
+    </a>
+    <a th:href="@{/offline}">
+        <button class="offline-button" type="button">Offline</button>
+    </a>
+</div>
+
+<div class="logo-container">
+    <span class="logo">WildSearch</span>
+</div>
+<footer th:replace="~{fragment::footer}"></footer>
+<script async src="https://cse.google.com/cse.js?cx=34edd376404af4e39"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script>
+    function goOnline() {
+        window.location.href = 'main-search-page.html';
+    }
+
+    function goOffline() {
+        window.location.href = 'main-search-page-offline.html';
+    }
+</script>
+</body>
+</html>

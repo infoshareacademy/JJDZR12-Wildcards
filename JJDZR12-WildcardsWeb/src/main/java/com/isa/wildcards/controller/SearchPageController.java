@@ -21,6 +21,10 @@ public class SearchPageController {
     public String getMainSearchPage() {
         return "main-search-page";
     }
+    @GetMapping("/offline")
+    public String getMainSearchPageOffline() {
+        return "main-search-page-offline";
+    }
 
     @PostMapping("/")
     public String postSearchQuery(@RequestParam String searchQuery, Model model) {
