@@ -2,21 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragment::head}"></head>
 <body class="body-user">
-
-<style>
-    body {
-        background-color: #202124;
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-</style>
-
 <div class="centered-container">
-    <p class="prompt">Select one of the options:</p>
+    <p class="prompt">Select option:</p>
     <div class="centered-bar">
         <a th:href="@{/}" class="search-button">
             <button class="search-button" type="button">Sign In</button>
@@ -33,7 +20,6 @@
         </a>
     </div>
 </div>
-
 <footer th:replace="~{fragment::footer}"></footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
