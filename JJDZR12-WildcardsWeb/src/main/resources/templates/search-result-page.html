@@ -22,7 +22,7 @@
     <span class="logo">WildSearch</span>
 </div>
 
-<form th:action="@{/offline}" method="post">
+<form th:action="@{/offline}" method="post" autocomplete="off">
     <div class="search-container-offline">
         <div class="search-bar-result">
             <input class="search-label" type="text" id="searchQuery" name="searchQuery">
@@ -37,13 +37,16 @@
     <div class="search-results" th:if="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
         <ul class="result-list">
             <li th:each="field : ${resultListModel}" class="search-item">
-                <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: blue">
-                    <span th:text="${field.getTitle()}" style="color: blue"></span>
+                <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: #357ae8; text-decoration: none;">
+                    <span th:text="${field.getTitle()}" style="color: #357ae8"></span>
                 </a>
                 <br>
                 <span th:text="${field.getPlot()}"></span>
             </li>
         </ul>
+    </div>
+    <div th:unless="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
+        <p>No results found</p>
     </div>
 </div>
 <footer th:replace="~{fragment::footer}"></footer>
