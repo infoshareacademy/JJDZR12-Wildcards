@@ -20,13 +20,6 @@ public class UserPageController {
     public String getSignInPage() {
         return "sign-in-page";
     }
-    @PostMapping("/addUser")
-    public String addUser(@ModelAttribute("newUser") UserDto userDto){
-        if (userDto.getUserName().equals("Username") && userDto.getPassword().equals("password")){
-            System.out.println("Welcome" + userDto.getUserName());
-        }
 
-        return "redirect:/";
-    }
 }
 
