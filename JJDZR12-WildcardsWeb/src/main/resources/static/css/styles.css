@@ -52,39 +52,66 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 220px;
-    padding-bottom: 10px;
-}
-
 .button-container {
     position: absolute;
     top: 0;
     left: 0;
     background-color: #202124;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
+    margin-top: 20px;
+    margin-left: 35px;
 }
 
-.online-button, .offline-button {
-    background-color: #4285f4;
+.split-button {
     color: #fff;
     border: none;
-    border-radius: 24px;
-    padding: 15px 16px;
+    border-radius: 0;
     cursor: pointer;
-    width: 150px;
-    max-width: 60%;
-    margin-top: 10px;
+    padding: 15px;
     transition: background-color 0.3s;
+    flex: 4;
 }
 
-.online-button:hover, .offline-button:hover {
+.online-button-online {
+    background-color: #4285f4;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+.offline-button-online {
+    background-color: #333;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+.online-button-offline {
+    background-color: #333;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+.offline-button-offline {
+    background-color: #4285f4;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+.split-button:hover {
     background-color: #357ae8;
+}
+
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 220px;
+}
+
+.logo-container-small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
 
@@ -92,6 +119,12 @@ body::-webkit-scrollbar-thumb {
     font-size: 70px;
     color: #fff;
     font-weight: bold;
+}
+.logo-small {
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    display: block;
 }
 
 
@@ -136,8 +169,8 @@ body::-webkit-scrollbar-thumb {
 
 
 .search-button {
-    background-color: #4285f4;
-    color: #999;
+    background-color: #333;
+    color: #ffffff;
     border: none;
     border-radius: 24px;
     padding: 15px 16px;

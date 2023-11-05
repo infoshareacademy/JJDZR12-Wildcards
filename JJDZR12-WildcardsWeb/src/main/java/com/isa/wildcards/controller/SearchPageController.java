@@ -22,11 +22,13 @@ public class SearchPageController {
         return "main-search-page";
     }
     @GetMapping("/offline")
-    public String getMainSearchPageOffline() {
+    public String getMainSearchPageOffline(Model model) {
+        // Clear the search results when navigating to the main search page offline
+        model.addAttribute("resultListModel", null);
         return "main-search-page-offline";
     }
 
-    @PostMapping("/")
+    @PostMapping("/offline")
     public String postSearchQuery(@RequestParam String searchQuery, Model model) {
         List<MovieDto> searchResultDto = service.findMoviesBySearchQuery(searchQuery);
         model.addAttribute("resultListModel", searchResultDto);

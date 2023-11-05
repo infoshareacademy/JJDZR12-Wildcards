@@ -11,27 +11,43 @@
 
 <div class="button-container">
     <a th:href="@{/}">
-        <button class="online-button" type="button">Online</button>
+        <button class="split-button online-button-offline">Online</button>
     </a>
     <a th:href="@{/offline}">
-        <button class="offline-button" type="button">Offline</button>
+        <button class="split-button offline-button-offline">Offline</button>
     </a>
 </div>
 
 <div class="logo-container">
     <span class="logo">WildSearch</span>
 </div>
+
+<form th:action="@{/offline}" method="post">
+    <div class="search-container">
+        <div class="search-bar">
+            <input class="search-label" type="text" id="searchQuery" name="searchQuery"
+                   placeholder="What you want to search?">
+        </div>
+        <button class="search-button" type="submit">Search</button>
+    </div>
+</form>
+
+<div class="container-center">
+    <div class="search-results" th:if="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
+        <ul class="result-list">
+            <li th:each="field : ${resultListModel}" class="search-item">
+                <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: white;">
+                    <span th:text="${field.getTitle()}"></span>
+                </a>
+                <br>
+                <span th:text="${field.getPlot()}"></span>
+            </li>
+        </ul>
+    </div>
+</div>
 <footer th:replace="~{fragment::footer}"></footer>
 <script async src="https://cse.google.com/cse.js?cx=34edd376404af4e39"></script>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-<script>
-    function goOnline() {
-        window.location.href = 'main-search-page.html';
-    }
 
-    function goOffline() {
-        window.location.href = 'main-search-page-offline.html';
-    }
-</script>
 </body>
 </html>
