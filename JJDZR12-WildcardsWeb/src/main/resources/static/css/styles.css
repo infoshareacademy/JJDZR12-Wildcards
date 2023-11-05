@@ -62,6 +62,7 @@ body::-webkit-scrollbar-thumb {
     margin-left: 35px;
 }
 
+
 .split-button {
     color: #fff;
     border: none;
@@ -72,28 +73,34 @@ body::-webkit-scrollbar-thumb {
     flex: 4;
 }
 
+
 .online-button-online {
     background-color: #4285f4;
     border-top-left-radius: 24px;
     border-bottom-left-radius: 24px;
 }
 
+
 .offline-button-online {
     background-color: #333;
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;
 }
+
+
 .online-button-offline {
     background-color: #333;
     border-top-left-radius: 24px;
     border-bottom-left-radius: 24px;
 }
 
+
 .offline-button-offline {
     background-color: #4285f4;
     border-top-right-radius: 24px;
     border-bottom-right-radius: 24px;
 }
+
 
 .split-button:hover {
     background-color: #357ae8;
@@ -106,6 +113,7 @@ body::-webkit-scrollbar-thumb {
     align-items: center;
     margin-top: 220px;
 }
+
 
 .logo-container-small {
     display: flex;
@@ -120,6 +128,8 @@ body::-webkit-scrollbar-thumb {
     color: #fff;
     font-weight: bold;
 }
+
+
 .logo-small {
     font-size: 20px;
     color: #fff;
@@ -137,6 +147,7 @@ body::-webkit-scrollbar-thumb {
     background-color: #202124;
 }
 
+
 .search-bar {
     display: flex;
     background-color: #333;
@@ -146,6 +157,7 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     padding: 5px 15px;
 }
+
 
 .search-bar-result {
     display: flex;
@@ -157,6 +169,7 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     padding: 5px 15px;
 }
+
 
 .search-label {
     border: none;
@@ -170,6 +183,7 @@ body::-webkit-scrollbar-thumb {
     border-top-left-radius: 24px;
     border-bottom-left-radius: 24px;
 }
+
 
 .search-button {
     background-color: #4285f4;
@@ -237,8 +251,8 @@ body::-webkit-scrollbar-thumb {
     border-bottom-right-radius: 24px;
     width: 932px;
     max-width: 100%;
-    border-top: 1px solid white;
-
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(to right, #333333 2%, white 2%, white 98%, #333333 98%) 1;
 }
 
 
@@ -350,6 +364,7 @@ table.gsc-search-box {
 .gsib_b {
     display: none !important;
 }
+
 
 .gsc-search-button-v2 {
     padding: 10px !important;
