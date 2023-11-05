@@ -336,3 +336,26 @@ table.gsc-search-box {
 .gsc-search-button-v2:hover {
     background-color: #357ae8 !important;
 }
+
+
+.column-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.column {
+    flex: 1; /* Equal width for each column */
+    padding: 50px; /* Add space between columns */
+    background-color: #333; /* Set background color to #333 */
+    border-radius: 40px; /* Round the corners */
+    margin: 100px 50px 50px;
+}
+
+.profile img {
+    width: 250px; /* Set a fixed width for the images */
+    height: 250px;
+    border-radius: 50%; /* Rounded border for images */
+    display: block; /* Remove default inline image alignment */
+    margin: 0 auto; /* Center align the images */
+}
