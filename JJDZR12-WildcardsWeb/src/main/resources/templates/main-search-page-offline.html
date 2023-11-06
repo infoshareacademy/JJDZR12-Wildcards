@@ -25,10 +25,11 @@
 <form th:action="@{/offline}" method="post" autocomplete="off">
     <div class="search-container">
         <div class="search-bar">
-            <input class="search-label" type="text" id="searchQuery" name="searchQuery"
-                   placeholder="What you want to search?">
+            <input class="search-label" type="text" id="searchQuery" name="searchQuery">
+            <button class="search-button" type="submit">
+                <i class="fa fa-search"></i>
+            </button>
         </div>
-        <button class="search-button" type="submit">Search</button>
     </div>
 </form>
 

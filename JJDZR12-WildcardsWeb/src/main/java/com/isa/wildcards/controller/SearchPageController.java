@@ -21,9 +21,9 @@ public class SearchPageController {
     public String getMainSearchPage() {
         return "main-search-page";
     }
+
     @GetMapping("/offline")
     public String getMainSearchPageOffline(Model model) {
-        // Clear the search results when navigating to the main search page offline
         model.addAttribute("resultListModel", null);
         return "main-search-page-offline";
     }
