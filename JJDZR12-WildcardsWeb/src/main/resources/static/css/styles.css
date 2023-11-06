@@ -52,11 +52,73 @@ body::-webkit-scrollbar-thumb {
 }
 
 
+.button-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #202124;
+    padding: 10px;
+    margin-top: 20px;
+    margin-left: 35px;
+}
+
+
+.split-button {
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    padding: 15px;
+    transition: background-color 0.3s;
+    flex: 4;
+}
+
+
+.online-button-online {
+    background-color: #4285f4;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+
+.offline-button-online {
+    background-color: #333;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+
+.online-button-offline {
+    background-color: #333;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+
+.offline-button-offline {
+    background-color: #4285f4;
+    border-top-right-radius: 24px;
+    border-bottom-right-radius: 24px;
+}
+
+
+.split-button:hover {
+    background-color: #357ae8;
+}
+
+
 .logo-container {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 220px;
+}
+
+
+.logo-container-small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-bottom: 10px;
 }
 
@@ -65,6 +127,14 @@ body::-webkit-scrollbar-thumb {
     font-size: 70px;
     color: #fff;
     font-weight: bold;
+}
+
+
+.logo-small {
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    display: block;
 }
 
 
@@ -78,20 +148,26 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-.google-search {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    background-color: #202124;
-}
-
-
 .search-bar {
     display: flex;
     background-color: #333;
     border-radius: 24px;
+    width: 950px;
+    margin: 0 auto;
+    position: relative;
+    padding: 5px 15px;
+}
+
+
+.search-bar-result {
+    display: flex;
+    background-color: #333;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    width: 942px;
+    margin: 0 auto;
+    position: relative;
+    padding: 5px 15px;
 }
 
 
@@ -102,23 +178,33 @@ body::-webkit-scrollbar-thumb {
     font-size: 16px;
     background-color: transparent;
     color: #999;
-    width: 400px;
-    max-width: 80%;
+    flex: 1;
     text-align: left;
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
 }
 
 
 .search-button {
     background-color: #4285f4;
-    color: #999;
+    color: #fff;
     border: none;
-    border-radius: 24px;
-    padding: 15px 16px;
+    border-radius: 50%;
+    padding: 8px;
     cursor: pointer;
-    width: 200px;
-    max-width: 80%;
-    margin-top: 20px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     transition: background-color 0.3s;
+    margin-right: 20px;
+}
+
+
+.fa-search:before {
+    content: "\f002";
+    font-family: "FontAwesome";
+    font-size: 16px;
 }
 
 
@@ -127,23 +213,46 @@ body::-webkit-scrollbar-thumb {
 }
 
 
+.google-search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    background-color: #202124;
+}
+
+
 .container-center {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 40vh;
     margin: 0;
+}
+
+
+.container-center-offline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border-bottom: 100px solid white;
 }
 
 
 .search-results {
     background-color: #333;
-    border-radius: 24px;
     padding: 20px;
-    max-width: 80%;
     overflow: auto;
     margin-bottom: 20px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    width: 932px;
+    max-width: 100%;
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(to right, #333333 2%, white 2%, white 98%, #333333 98%) 1;
 }
 
 
@@ -165,6 +274,7 @@ body::-webkit-scrollbar-thumb {
 
 
 .search-item {
+    margin-top: 50px;
     margin-bottom: 10px;
     color: #999;
 }
@@ -254,6 +364,7 @@ table.gsc-search-box {
 .gsib_b {
     display: none !important;
 }
+
 
 .gsc-search-button-v2 {
     padding: 10px !important;
