@@ -412,3 +412,19 @@ table.gsc-search-box {
     display: block;
     margin: 0 auto;
 }
+
+
+.about-us-line {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold
+}
+
+
+.about-us-line-ahref {
+    color: #f44271;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold
+}
