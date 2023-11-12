@@ -8,11 +8,11 @@
         <form th:action="@{/addUser}" method="post">
                     <div class="search-bar">
                         <input class="search-label" type="text" id="userName" name="userName"
-                               placeholder="Login">
+                               placeholder="Login" required>
                     </div>
                     <div class="search-bar">
                         <input class="search-label" type="password" id="password" name="password"
-                               placeholder="Password">
+                               placeholder="Password" required>
                     </div>
                     <div class="centered-bar">
                     <button class="search-button" type="submit" >Submit</button>
