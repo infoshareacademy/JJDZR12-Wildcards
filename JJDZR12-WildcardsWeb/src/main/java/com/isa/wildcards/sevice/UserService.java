@@ -4,7 +4,6 @@ import com.isa.wildcards.dto.UserDto;
 import com.isa.wildcards.entity.User;
 import com.isa.wildcards.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,5 +17,15 @@ public class UserService {
             throw new IllegalArgumentException("Username " + userDto.getUserName() + " already exists");
         }
         userRepository.save(new User(userDto.getUserName(),userDto.getPassword()));
+    }
+
+    private User getUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    public boolean logInUser(User user){
+        User existingUser = getUserByUsername(user.getUsername());
+
+        return existingUser != null && user.getPassword().equals(existingUser.getPassword());
     }
 }

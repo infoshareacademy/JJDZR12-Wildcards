@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment::head}"></head>
+<body class="body-user">
+<div class="centered-container">
+    <p class="prompt">Sign In form</p>
+    <div class="centered-bar">
+        <form th:action="@{/sign-in}" method="post" th:object="${user}">
+            <div class="search-bar">
+                <input class="search-label" type="text" th:field="*{username}" id="userName" name="userName"
+                       placeholder="Login" required>
+            </div>
+            <div class="search-bar">
+                <input class="search-label" type="password" th:field="*{password}" id="password" name="password"
+                       placeholder="Password" required>
+            </div>
+            <div class="centered-bar">
+                <button class="search-button" type="submit" >Submit</button>
+            </div>
+        </form>
+        <div class="centered-bar">
+            <a th:href="@{/}">
+                <button class="search-button-btn" type="button">Back</button>
+            </a>
+        </div>
+        <p class="prompt" th:if="${error}">Invalid username or password</p>
+    </div>
+</div>
+</body>
+</html>
