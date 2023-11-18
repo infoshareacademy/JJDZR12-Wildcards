@@ -8,7 +8,9 @@
         <button class="login-button" type="button">User</button>
     </a>
 </div>
-
+<div class="centered-container-message">
+    <p class="prompt text-center" th:if="${successMessage}" th:text="${successMessage}"></p>
+</div>
 <div class="logo-container">
     <span class="logo">WildSearch</span>
 </div>

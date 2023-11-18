@@ -21,30 +21,44 @@ public class UserPageController {
     public User user() {
         return new User();
     }
+
     @GetMapping("/user")
     public String getMainUserPage() {
         return "user-main-page";
     }
+
     @GetMapping("/registration")
     public String getRegistrationPage() {
         return "registration-page";
     }
+
     @GetMapping("/sign-in")
-    public String getSignInPage() {
+    public String getSignInPage(Model model, @ModelAttribute("successMessage") String successMessage) {
+        model.addAttribute("successMessage", successMessage);
         return "sign-in-page";
     }
+
     @PostMapping("/addUser")
-    public String addUser(@ModelAttribute("newUser") UserDto userDto){
-        userService.createNewUser(userDto);
-        return "redirect:/";
+    public String addUser(@ModelAttribute("newUser") UserDto userDto, Model model, RedirectAttributes redirectAttributes){
+        try {
+            userService.createNewUser(userDto);
+            redirectAttributes.addFlashAttribute("successMessage", "Registration successful! You can now log in.");
+            return "redirect:/sign-in";
+        } catch(IllegalArgumentException e) {
+            model.addAttribute("error", true);
+            return "registration-page";
+        }
     }
+
     @PostMapping("/sign-in")
-    public String logInUser(@ModelAttribute("user") User user, Model model){
+    public String logInUser(@ModelAttribute("user") User user, Model model, RedirectAttributes redirectAttributes){
         if (userService.logInUser(user)) {
+            redirectAttributes.addFlashAttribute("successMessage", "Hello " + user.getUsername());
             return "redirect:/";
         } else {
             model.addAttribute("error", true);
             return "sign-in-page";
         }
     }
+
 }

@@ -25,7 +25,7 @@ public class UserService {
 
     public boolean logInUser(User user){
         User existingUser = getUserByUsername(user.getUsername());
-
         return existingUser != null && user.getPassword().equals(existingUser.getPassword());
     }
+
 }

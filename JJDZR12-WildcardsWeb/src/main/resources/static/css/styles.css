@@ -97,6 +97,7 @@ body::-webkit-scrollbar-thumb {
     text-align: left;
 }
 
+
 .search-button {
     background-color: #4285f4;
     color: #fff;
@@ -180,6 +181,7 @@ body::-webkit-scrollbar-thumb {
     bottom: 0;
 }
 
+
 .centered-container {
     text-align: center;
     border: transparent;
@@ -189,6 +191,7 @@ body::-webkit-scrollbar-thumb {
     border-radius: 24px;
     background-color: #333;
 }
+
 
 .centered-container-registration {
     text-align: center;
@@ -200,11 +203,14 @@ body::-webkit-scrollbar-thumb {
     background-color: #333;
 }
 
+
 .prompt {
     font-size: 25px;
     color: #fff;
     font-weight: bold;
 }
+
+
 .search-button-btn {
     background-color: #4285f4;
     color: #fff;
@@ -218,11 +224,20 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 20px;
     transition: background-color 0.3s;
 }
+
+
 .body-user {
     background-color: #202124;
     margin: 0;
     padding: 0;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.centered-container-message {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -24,6 +24,7 @@
             </a>
         </div>
         <p class="prompt" th:if="${error}">Invalid username or password</p>
+        <p class="prompt" th:if="${successMessage}" th:text="${successMessage}"></p>
     </div>
 </div>
 </body>

@@ -23,6 +23,7 @@
                 <button class="search-button-btn" type="button">Back</button>
             </a>
         </div>
+        <p class="prompt" th:if="${error}">Username already exists!</p>
     </div>
 </div>
 <footer th:replace="~{fragment::footer}"></footer>
