@@ -190,6 +190,8 @@ body::-webkit-scrollbar-thumb {
     position: fixed;
     bottom: 0;
 }
+
+
 .gsc-control-cse {
     background-color: #333 !important;
     border: 0 !important;
@@ -275,6 +277,7 @@ table.gsc-search-box {
     background-color: #357ae8 !important;
 }
 
+
 .centered-container {
     text-align: center;
     border: 5px solid white;
@@ -283,11 +286,14 @@ table.gsc-search-box {
     width: 100%;
 }
 
+
 .prompt {
     font-size: 25px;
     color: #fff;
     font-weight: bold;
 }
+
+
 .search-button-btn {
     background-color: #4285f4;
     color: #fff;
@@ -301,6 +307,8 @@ table.gsc-search-box {
     margin-bottom: 20px;
     transition: background-color 0.3s;
 }
+
+
 .body-user {
     background-color: #333;
     margin: 0;
