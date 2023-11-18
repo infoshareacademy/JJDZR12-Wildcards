@@ -387,3 +387,44 @@ table.gsc-search-box {
 .gsc-search-button-v2:hover {
     background-color: #357ae8 !important;
 }
+
+
+.column-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+
+.column {
+    flex: 1;
+    padding: 50px;
+    background-color: #333;
+    border-radius: 40px;
+    margin: 100px 50px 50px;
+}
+
+
+.profile img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.about-us-line {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold
+}
+
+
+.about-us-line-ahref {
+    color: #f44271;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold
+}
