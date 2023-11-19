@@ -23,7 +23,13 @@ public class SearchPageController {
         return "main-search-page";
     }
 
-    @PostMapping("/")
+    @GetMapping("/offline")
+    public String getMainSearchPageOffline(Model model) {
+        model.addAttribute("resultListModel", null);
+        return "main-search-page-offline";
+    }
+
+    @PostMapping("/offline")
     public String postSearchQuery(@RequestParam String searchQuery, Model model) {
         List<MovieDto> searchResultDto = service.findMoviesBySearchQuery(searchQuery);
         model.addAttribute("resultListModel", searchResultDto);
@@ -38,5 +44,3 @@ public class SearchPageController {
         return "selected-result-page";
     }
 }
-
-
