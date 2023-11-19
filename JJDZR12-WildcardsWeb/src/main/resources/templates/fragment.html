@@ -8,12 +8,13 @@
     <link th:href="@{/css/styles.css}" rel="stylesheet"/>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
 <footer th:fragment="footer" class="foot">
     <p>&copy; 2023 Wilcards ISA project. All rights reserved.</p>
-    <p>Contact: <a href="mailto:contact@example.com">contact@example.com</a></p>
+    <p>About us: <a th:href="@{/about}">Click me!!</a></p>
 </footer>
 
 </body>
