@@ -18,7 +18,8 @@ public class SearchPageController {
     private final SearchResultService service;
 
     @GetMapping("/")
-    public String getMainSearchPage() {
+    public String getMainSearchPage(Model model, @ModelAttribute("successMessage") String successMessage) {
+        model.addAttribute("successMessage", successMessage);
         return "main-search-page";
     }
 
@@ -43,5 +44,3 @@ public class SearchPageController {
         return "selected-result-page";
     }
 }
-
-
