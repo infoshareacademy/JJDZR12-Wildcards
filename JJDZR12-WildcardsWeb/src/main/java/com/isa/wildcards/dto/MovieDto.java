@@ -38,4 +38,25 @@ public class MovieDto {
     private String awards;
 
     private String metascore;
+
+    @Override
+    public String toString() {
+        return "MovieDto{" +
+                "uuid=" + uuid +
+                ", title='" + title + '\'' +
+                ", year='" + year + '\'' +
+                ", rated='" + rated + '\'' +
+                ", released='" + released + '\'' +
+                ", runtime='" + runtime + '\'' +
+                ", genre='" + genre + '\'' +
+                ", director='" + director + '\'' +
+                ", writer='" + writer + '\'' +
+                ", actors='" + actors + '\'' +
+                ", plot='" + plot + '\'' +
+                ", language='" + language + '\'' +
+                ", country='" + country + '\'' +
+                ", awards='" + awards + '\'' +
+                ", metascore='" + metascore + '\'' +
+                '}';
+    }
 }
