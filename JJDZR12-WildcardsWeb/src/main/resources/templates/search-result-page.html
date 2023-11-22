@@ -41,7 +41,7 @@
                     <span th:text="${field.getTitle()}" style="color: #357ae8"></span>
                 </a>
                 <br>
-                <span th:text="${field.getPlot()}"></span>
+                <span th:text="${@stringUtils.abbreviate(field.getPlot(), 50, '...')}"></span>
             </li>
         </ul>
         <p th:unless="${resultListModel != null and not #lists.isEmpty(resultListModel)}" style="color: white">No results found</p>
