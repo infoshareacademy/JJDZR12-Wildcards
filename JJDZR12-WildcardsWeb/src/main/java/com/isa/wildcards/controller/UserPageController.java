@@ -3,6 +3,7 @@ package com.isa.wildcards.controller;
 import com.isa.wildcards.dto.UserDto;
 import com.isa.wildcards.entity.User;
 import com.isa.wildcards.sevice.UserService;
+import com.isa.wildcards.utilities.SessionManager;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +17,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserPageController {
 
     private UserService userService;
+    private SessionManager sessionManager;
 
     @ModelAttribute("user")
     public User user() {
         return new User();
+    }
+
+    @ModelAttribute("sessionManager")
+    public SessionManager getSessionManager() {
+        return sessionManager;
     }
 
     @GetMapping("/user")
@@ -53,6 +60,7 @@ public class UserPageController {
     @PostMapping("/sign-in")
     public String logInUser(@ModelAttribute("user") User user, Model model, RedirectAttributes redirectAttributes){
         if (userService.logInUser(user)) {
+            sessionManager.logIn(user.getUsername());
             redirectAttributes.addFlashAttribute("successMessage", "Hello " + user.getUsername());
             return "redirect:/";
         } else {
@@ -61,4 +69,14 @@ public class UserPageController {
         }
     }
 
+    @GetMapping("/sign-out")
+    public String logOutUser(){
+        sessionManager.logOut();
+        return "redirect:/";
+    }
+
+    @GetMapping("/easter-egg")
+    public String getEasterEgg(){
+        return "easter-egg";
+    }
 }
