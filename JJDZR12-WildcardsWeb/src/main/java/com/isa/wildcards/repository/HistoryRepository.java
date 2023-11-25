@@ -8,8 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    boolean existsByUsername(String userName);
+public interface HistoryRepository extends JpaRepository<History, Long> {
 
-    User findByUsername(String username);
+    List<History> findAllByUser(User user);
 }

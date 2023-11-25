@@ -22,21 +22,35 @@
     <span class="logo">WildSearch</span>
 </div>
 
-<form th:action="@{/offline}" method="post" autocomplete="off">
-    <div class="search-container-offline">
-        <div class="search-bar-result">
-            <input class="search-label" type="text" id="searchQuery" name="searchQuery">
-            <button class="search-button" type="submit">
-                <i class="fa fa-search"></i>
+<div class="search-container">
+
+    <form th:action="@{/offline}" method="post" autocomplete="off">
+        <div class="search-container-offline">
+            <div class="search-bar-result">
+                <input class="search-label" type="text" id="searchQuery" name="searchQuery">
+                <button class="search-button" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="history">
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn search-button">
+                <i class="fa-solid fa-book"></i>
             </button>
+            <div id="myDropdown2" class="dropdown-content">
+                <a th:each="item : ${historyQueryList}" th:text="${item}" th:data-item="${item}" onclick="fillInput(this.getAttribute('data-item'))"></a>
+            </div>
         </div>
     </div>
-</form>
 
+</div>
 <div class="container-center">
     <div class="search-results">
         <ul class="result-list" th:if="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
-            <li th:each="field : ${resultListModel}" class="search-item">
+            <li th:each="field, iterStat : ${resultListModel}" class="search-item" th:unless="${iterStat.index >= 10}">
                 <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: #357ae8; text-decoration: none;">
                     <span th:text="${field.getTitle()}" style="color: #357ae8"></span>
                 </a>
@@ -44,10 +58,38 @@
                 <span th:text="${@stringUtils.abbreviate(field.getPlot(), 50, '...')}"></span>
             </li>
         </ul>
-        <p th:unless="${resultListModel != null and not #lists.isEmpty(resultListModel)}" style="color: white">No results found</p>
+
+        <p th:unless="${resultListModel != null and not #lists.isEmpty(resultListModel)}" style="color: white">No
+            results found</p>
     </div>
 </div>
 <footer th:replace="~{fragment::footer}"></footer>
+<script>
+    function fillInput(word) {
+        const inputElement = document.getElementById("searchQuery");
+
+        inputElement.value = word;
+
+        document.getElementById("myDropdown2").classList.remove("show");
+    }
+
+    function myFunction() {
+        document.getElementById("myDropdown2").classList.toggle("show");
+    }
+
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
 <script async src="https://cse.google.com/cse.js?cx=34edd376404af4e39"></script>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 

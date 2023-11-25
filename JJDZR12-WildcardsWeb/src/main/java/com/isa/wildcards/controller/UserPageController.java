@@ -2,7 +2,10 @@ package com.isa.wildcards.controller;
 
 import com.isa.wildcards.dto.UserDto;
 import com.isa.wildcards.entity.User;
+import com.isa.wildcards.repository.HistoryRepository;
+import com.isa.wildcards.repository.UserRepository;
 import com.isa.wildcards.sevice.UserService;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @AllArgsConstructor
 public class UserPageController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @ModelAttribute("user")
     public User user() {
@@ -51,9 +54,11 @@ public class UserPageController {
     }
 
     @PostMapping("/sign-in")
-    public String logInUser(@ModelAttribute("user") User user, Model model, RedirectAttributes redirectAttributes){
+    public String logInUser(@ModelAttribute("user") User user, Model model, RedirectAttributes redirectAttributes, HttpSession session){
         if (userService.logInUser(user)) {
             redirectAttributes.addFlashAttribute("successMessage", "Hello " + user.getUsername());
+            session.setAttribute("loggedUser", user);
+            session.setAttribute("historyQueryList", userService.findAllByUser(user));
             return "redirect:/";
         } else {
             model.addAttribute("error", true);

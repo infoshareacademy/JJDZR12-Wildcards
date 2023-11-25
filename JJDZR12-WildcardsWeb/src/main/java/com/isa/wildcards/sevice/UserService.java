@@ -1,16 +1,21 @@
 package com.isa.wildcards.sevice;
 
 import com.isa.wildcards.dto.UserDto;
+import com.isa.wildcards.entity.History;
 import com.isa.wildcards.entity.User;
+import com.isa.wildcards.repository.HistoryRepository;
 import com.isa.wildcards.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+    private final HistoryRepository historyRepository;
 
     public void createNewUser(UserDto userDto){
         if(userRepository.existsByUsername(userDto.getUserName())){
@@ -28,4 +33,7 @@ public class UserService {
         return existingUser != null && user.getPassword().equals(existingUser.getPassword());
     }
 
+    public List<History> findAllByUser(final User user) {
+        return historyRepository.findAllByUser(userRepository.findByUsername(user.getUsername()));
+    }
 }
