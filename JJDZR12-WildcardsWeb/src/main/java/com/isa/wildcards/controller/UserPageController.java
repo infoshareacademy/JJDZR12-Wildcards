@@ -5,6 +5,7 @@ import com.isa.wildcards.entity.User;
 import com.isa.wildcards.repository.HistoryRepository;
 import com.isa.wildcards.repository.UserRepository;
 import com.isa.wildcards.sevice.UserService;
+import com.isa.wildcards.utilities.SessionManager;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,10 +20,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserPageController {
 
     private final UserService userService;
+    private SessionManager sessionManager;
 
     @ModelAttribute("user")
     public User user() {
         return new User();
+    }
+
+    @ModelAttribute("sessionManager")
+    public SessionManager getSessionManager() {
+        return sessionManager;
     }
 
     @GetMapping("/user")
@@ -56,6 +63,7 @@ public class UserPageController {
     @PostMapping("/sign-in")
     public String logInUser(@ModelAttribute("user") User user, Model model, RedirectAttributes redirectAttributes, HttpSession session){
         if (userService.logInUser(user)) {
+            sessionManager.logIn(user.getUsername());
             redirectAttributes.addFlashAttribute("successMessage", "Hello " + user.getUsername());
             session.setAttribute("loggedUser", user);
             session.setAttribute("historyQueryList", userService.findAllByUser(user));
@@ -66,4 +74,14 @@ public class UserPageController {
         }
     }
 
+    @GetMapping("/sign-out")
+    public String logOutUser(){
+        sessionManager.logOut();
+        return "redirect:/";
+    }
+
+    @GetMapping("/easter-egg")
+    public String getEasterEgg(){
+        return "easter-egg";
+    }
 }
