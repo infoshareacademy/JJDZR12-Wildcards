@@ -430,7 +430,13 @@ table.gsc-search-box {
 }
 
 
-
+.bar-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100px;
+    height: 200px;
+}
 
 .centered-container {
     text-align: center;
