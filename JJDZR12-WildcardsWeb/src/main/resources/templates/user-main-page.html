@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment::head}"></head>
+<body class="body-user">
+<div class="centered-container">
+    <p class="prompt">Select option:</p>
+    <div class="centered-bar">
+        <a th:unless="${sessionManager.isLoggedIn()}" th:href="@{/sign-in}" class="search-button-user">
+            <button class="search-button-user" type="button">Sign In</button>
+        </a>
+    </div>
+    <div class="centered-bar">
+        <a th:unless="${sessionManager.isLoggedIn()}" th:href="@{/registration}" class="search-button-user">
+            <button class="search-button-user" type="button">Register</button>
+        </a>
+    </div>
+    <div class="centered-bar">
+        <a th:if="${sessionManager.isLoggedIn()}" th:href="@{/easter-egg}" class="search-button-user">
+            <button class="search-button-user" type="button">Easter Egg</button>
+        </a>
+    </div>
+    <div class="centered-bar">
+        <a th:if="${sessionManager.isLoggedIn()}" th:href="@{/sign-out}" class="search-button-user">
+            <button class="search-button-user" type="button">Log Out</button>
+        </a>
+    </div>
+    <div class="centered-bar">
+        <a th:href="@{/}" class="search-button-btn">
+            <button class="search-button-btn" type="button">Back</button>
+        </a>
+    </div>
+</div>
+<footer th:replace="~{fragment::footer}"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

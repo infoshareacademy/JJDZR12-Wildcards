@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment::head}"></head>
+<body>
+
+<div class="top-bar">
+    <a th:href="@{/}">
+        <button class="login-button" type="button">Back</button>
+    </a>
+</div>
+
+<div class="column-container">
+
+    <div class="column">
+
+        <div class="profile">
+            <img th:src="@{/images/1.jpg}" alt="Darek">
+            <h2 class="about-us-line">Dariusz Zander</h2>
+            <a href="https://github.com/Smrj319" target="_blank" class="about-us-line-ahref">GitHub</a><br><br>
+            <a href="https://www.linkedin.com/in/zander-dariusz/" target="_blank" class="about-us-line-ahref">LinkedIn</a>
+        </div>
+    </div>
+
+    <div class="column">
+
+        <div class="profile">
+            <img th:src="@{/images/2.jpg}" alt="Artem">
+            <h2 class="about-us-line">Artem Nizhnyk</h2>
+            <a href="https://github.com/artemnizhnyk" target="_blank" class="about-us-line-ahref">GitHub</a><br><br>
+            <a href="https://www.linkedin.com/in/artem-nizhnyk/" target="_blank" class="about-us-line-ahref">LinkedIn</a>
+        </div>
+    </div>
+
+    <div class="column">
+
+        <div class="profile">
+            <img th:src="@{/images/3.jpg}" alt="Krzysiek">
+            <h2 class="about-us-line">Krzysztof Harężlak</h2>
+            <a href="https://github.com/Krzysztof-Harezlak" target="_blank" class="about-us-line-ahref">GitHub</a><br><br>
+            <a href="https://www.linkedin.com/in/krzysztof-har%C4%99%C5%BClak/" target="_blank" class="about-us-line-ahref">LinkedIn</a>
+        </div>
+    </div>
+
+</div>
+
+<footer th:replace="~{fragment::footer}"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

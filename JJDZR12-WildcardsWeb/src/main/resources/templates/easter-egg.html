@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment::head}"></head>
+<body class="body-user">
+<div>
+    <img src="https://i.wpimg.pl/1271x900/filerepo.grupawp.pl/api/v1/display/embed/df5f46fa-2e27-4d89-ba5c-0436809ccbe2" alt="Funny Image">
+</div>
+<div class="top-bar">
+    <a th:href="@{/}">
+        <button class="login-button" type="button">Back</button>
+    </a>
+</div>
+<footer th:replace="~{fragment::footer}"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment::head}"></head>
+<body>
+
+<div class="top-bar">
+    <a th:href="@{/user}">
+        <button class="login-button" type="button">User</button>
+    </a>
+</div>
+
+<div class="container-center">
+    <div class="search-results">
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.title)}">Title: <span th:text="${selectedResult.title}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.year)}">Year: <span th:text="${selectedResult.year}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.rated)}">Rated: <span th:text="${selectedResult.rated}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.released)}">Released: <span th:text="${selectedResult.released}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.runtime)}">Runtime: <span th:text="${selectedResult.runtime}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.genre)}">Genre: <span th:text="${selectedResult.genre}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.director)}">Director: <span th:text="${selectedResult.director}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.writer)}">Writer: <span th:text="${selectedResult.writer}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.actors)}">Actors: <span th:text="${selectedResult.actors}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.language)}">Language: <span th:text="${selectedResult.language}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.country)}">Country: <span th:text="${selectedResult.country}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.awards)}">Awards: <span th:text="${selectedResult.awards}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.metascore)}">Metascore: <span th:text="${selectedResult.metascore}"></span></p>
+        <p class="search-item" th:if="${not #strings.isEmpty(selectedResult.plot)}">Plot: <span th:text="${selectedResult.plot}"></span></p>
+    </div>
+
+    <div class="bar-right">
+        <a th:href="@{/offline}" class="search-button">
+            <span>Back</span>
+        </a>
+    </div>
+
+</div>
+
+<footer th:replace="~{fragment::footer}"></footer>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+{
+  "users": [
+    {
+      "username": "Admin",
+      "password": "admin123!"
+    },
+    {
+      "username": "Test",
+      "password": "test123!"
+    },
+    {
+      "username": "artem",
+      "password": "artem"
+    },
+    {
+      "username": "any",
+      "password": "any"
+    },
+    {
+      "username": "Hello",
+      "password": "Hello"
+    },
+    {
+      "username": "Space",
+      "password": "Space"
+    },
+    {
+      "username": "Hi",
+      "password": "Hi"
+    },
+    {
+      "username": "test1",
+      "password": "test1"
+    },
+    {
+      "username": "Test3",
+      "password": "Test3"
+    },
+    {
+      "username": "Test4",
+      "password": "Test4"
+    },
+    {
+      "username": "testtest",
+      "password": "testtest"
+    },
+    {
+      "username": "test10",
+      "password": "test10"
+    },
+    {
+      "username": "anyUser",
+      "password": "anyUser"
+    },
+    {
+      "username": "bla",
+      "password": "bla"
+    },
+    {
+      "username": "Smrj",
+      "password": "4111"
+    },
+    {
+      "username": "DDD",
+      "password": "123"
+    },
+    {
+      "username": "test22",
+      "password": "2222"
+    },
+    {
+      "username": "Bob",
+      "password": "123"
+    },
+    {
+      "username": "Tadam",
+      "password": "4321"
+    },
+    {
+      "username": "123",
+      "password": "456"
+    },
+    {
+      "username": "gsg",
+      "password": "sdgsdg"
+    },
+    {
+      "username": "QWERTY",
+      "password": "123456"
+    },
+    {
+      "username": "aegasgasg",
+      "password": "aegasdgsdgsdg"
+    }
+  ]
+}

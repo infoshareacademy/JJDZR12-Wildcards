@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragment::head}"></head>
+<body>
+
+<div class="top-bar">
+    <a th:href="@{/user}">
+        <button class="login-button" type="button">User</button>
+    </a>
+</div>
+
+<div class="button-container">
+    <a th:href="@{/}">
+        <button class="split-button online-button-online">Online</button>
+    </a>
+    <a th:href="@{/offline}">
+        <button class="split-button offline-button-online">Offline</button>
+    </a>
+</div>
+
+<div class="centered-container-message">
+    <p class="prompt text-center" th:if="${successMessage}" th:text="${successMessage}"></p>
+</div>
+
+<div class="logo-container">
+    <span class="logo">WildSearch</span>
+</div>
+
+<div class="google-search">
+    <div class="gcse-search"></div>
+</div>
+
+<footer th:replace="~{fragment::footer}"></footer>
+<script async src="https://cse.google.com/cse.js?cx=34edd376404af4e39"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script>
+    (function () {
+        const googleid = '34edd376404af4e39';
+        const gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = (document.location.protocol === 'https:' ? 'https:' : 'http:') + '//cse.google.com/cse.js?cx=' + googleid;
+        const script = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, script);
+    })();
+
+    window.onload = function () {
+        const title = "Type to search...";
+        const textBox = document.querySelector("#gsc-i-id1");
+        const button = document.querySelector(".gsc-search-button-v2 svg title");
+        textBox.placeholder = title;
+        textBox.title = title;
+        button.innerHTML = title;
+    }
+</script>
+</body>
+</html>
