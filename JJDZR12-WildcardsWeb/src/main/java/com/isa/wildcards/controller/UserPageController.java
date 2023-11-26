@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserPageController {
 
     private final UserService userService;
+
     private SessionManager sessionManager;
 
     @ModelAttribute("user")
