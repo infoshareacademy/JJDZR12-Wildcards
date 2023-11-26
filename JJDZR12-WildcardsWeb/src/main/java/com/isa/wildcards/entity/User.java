@@ -2,21 +2,26 @@ package com.isa.wildcards.entity;
 
 import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "user")
 @NoArgsConstructor
-@AllArgsConstructor
 public class User extends AbstractEntity {
 
     private String username;
 
     private String password;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<History> historyId;
+
+    public User(final String username, final String password) {
+        this.username = username;
+        this.password = password;
+    }
 }
