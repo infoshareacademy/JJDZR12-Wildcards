@@ -25,7 +25,7 @@ public class MoviesSearchResultMapper {
         return sortedMovies.stream().map(movie -> {
             MovieDto movieDto = new MovieDto();
             movieDto.setUuid(movie.getUuid());
-            movieDto.setTitle(movie.getTitle());
+            movieDto.setTitle(movie.getTitle() != null ? movie.getTitle().toLowerCase() : null);
             movieDto.setYear(movie.getYear());
             movieDto.setRated(movie.getRated());
             movieDto.setReleased(movie.getReleased());

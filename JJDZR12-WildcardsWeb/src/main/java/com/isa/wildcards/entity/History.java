@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.Objects;
+
 @Table(name = "history")
 @Getter
 @Setter
@@ -22,5 +24,17 @@ public class History extends AbstractEntity {
     @Override
     public String toString() {
         return searchQuery;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof History history)) return false;
+        return Objects.equals(getSearchQuery(), history.getSearchQuery()) && Objects.equals(getUser(), history.getUser());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getSearchQuery(), getUser());
     }
 }
