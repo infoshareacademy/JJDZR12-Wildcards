@@ -3,11 +3,12 @@ package com.isa.wildcards.sevice;
 import com.isa.wildcards.dto.MovieDto;
 import com.isa.wildcards.entity.Movie;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
-@Component
+@Service
 public class MoviesSearchResultMapper {
     public List<MovieDto> toMoviesDto(final Map<Movie, Integer> foundMoviesWithPriority) {
 

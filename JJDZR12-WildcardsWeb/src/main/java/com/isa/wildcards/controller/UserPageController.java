@@ -2,8 +2,6 @@ package com.isa.wildcards.controller;
 
 import com.isa.wildcards.dto.UserDto;
 import com.isa.wildcards.entity.User;
-import com.isa.wildcards.repository.HistoryRepository;
-import com.isa.wildcards.repository.UserRepository;
 import com.isa.wildcards.sevice.UserService;
 import com.isa.wildcards.utilities.SessionManager;
 import jakarta.servlet.http.HttpSession;

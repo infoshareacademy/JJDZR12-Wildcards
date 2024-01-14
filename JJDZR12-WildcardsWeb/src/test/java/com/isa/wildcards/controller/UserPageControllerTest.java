@@ -5,8 +5,6 @@ import com.isa.wildcards.entity.User;
 import com.isa.wildcards.sevice.UserService;
 import com.isa.wildcards.utilities.SessionManager;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -15,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.ui.Model;
 
 import java.util.Collections;
 import java.util.List;
@@ -34,12 +31,6 @@ public class UserPageControllerTest {
 
     @MockBean
     private SessionManager sessionManager;
-
-    @MockBean
-    private Model model;
-
-    @InjectMocks
-    private UserPageController userPageController;
 
     private MockHttpServletRequestBuilder buildPostRequest(String url, User user, MockHttpSession session) {
         return MockMvcRequestBuilders.post(url)
