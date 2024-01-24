@@ -29,12 +29,14 @@ public class History extends AbstractEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof History history)) return false;
-        return Objects.equals(getSearchQuery(), history.getSearchQuery()) && Objects.equals(getUser(), history.getUser());
+        if (o == null || getClass() != o.getClass()) return false;
+        History history = (History) o;
+        return Objects.equals(searchQuery, history.searchQuery) &&
+                Objects.equals(user, history.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getSearchQuery(), getUser());
+        return Objects.hash(searchQuery, user);
     }
 }

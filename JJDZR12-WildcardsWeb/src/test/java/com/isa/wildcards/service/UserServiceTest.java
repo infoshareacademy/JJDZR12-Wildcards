@@ -97,15 +97,20 @@ class UserServiceTest {
 
     @Test
     void findAllByUserSuccessful() {
-
         User user = new User("testUser", "password");
         userRepository.save(user);
+
+        System.out.println("User: " + user);
 
         History history1 = new History("Event 1", user);
         History history2 = new History("Event 2", user);
         historyRepository.saveAll(List.of(history1, history2));
 
         List<History> histories = historyRepository.findAllByUser(user);
+
+        System.out.println("Size of histories: " + histories.size());
+        System.out.println("History 1: " + history1);
+        System.out.println("History 2: " + history2);
 
         assertEquals(2, histories.size());
         assertTrue(histories.contains(history1));

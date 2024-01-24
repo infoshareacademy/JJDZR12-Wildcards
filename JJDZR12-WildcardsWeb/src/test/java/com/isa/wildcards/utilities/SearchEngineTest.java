@@ -4,11 +4,12 @@ import com.isa.wildcards.entity.Movie;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SearchEngineTest {
+
 
     @Test
     public void testFindMoviesFoundEntry() {
@@ -33,6 +34,7 @@ public class SearchEngineTest {
         Map<Movie, Integer> result4 = SearchEngine.findMovies(movies, "Sci-Fi");
         assertTrue(result4.isEmpty());
     }
+
 
     private Movie getMovie() {
         Movie movie = new Movie();
