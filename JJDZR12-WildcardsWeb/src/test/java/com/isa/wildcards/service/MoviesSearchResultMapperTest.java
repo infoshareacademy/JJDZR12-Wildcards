@@ -4,51 +4,54 @@ import com.isa.wildcards.dto.MovieDto;
 import com.isa.wildcards.entity.Movie;
 import com.isa.wildcards.sevice.MoviesSearchResultMapper;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-
-public class MoviesSearchResultMapperTest {
+class MoviesSearchResultMapperTest {
 
     @Test
-    public void testToMoviesDto() {
-
-        MoviesSearchResultMapper mapper = new MoviesSearchResultMapper();
+    void shouldReturnMoviesList() {
+        //given
         Map<Movie, Integer> foundMoviesWithPriority = new HashMap<>();
         Movie movie1 = new Movie();
         Movie movie2 = new Movie();
         foundMoviesWithPriority.put(movie1, 3);
         foundMoviesWithPriority.put(movie2, 5);
 
-        List<MovieDto> result = mapper.toMoviesDto(foundMoviesWithPriority);
+        //when
+        List<MovieDto> result = MoviesSearchResultMapper.toMoviesDto(foundMoviesWithPriority);
 
-        assertNotNull(result);
-        assertEquals(2, result.size());
+        //then
+        assertThat(result).hasSize(2);
     }
 
     @Test
-    public void testToMoviesDtoWithEmptyInput() {
-
-        MoviesSearchResultMapper mapper = new MoviesSearchResultMapper();
+    void shouldReturnEmptyListWhenParameterIsEmpty() {
+        //given
         Map<Movie, Integer> foundMoviesWithPriority = new HashMap<>();
 
-        List<MovieDto> result = mapper.toMoviesDto(foundMoviesWithPriority);
+        //when
+        List<MovieDto> result = MoviesSearchResultMapper.toMoviesDto(foundMoviesWithPriority);
 
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
+        //then
+        assertThat(result).isEmpty();
     }
 
-    @Test
-    public void testToMoviesDtoWithNullInput() {
-
-        MoviesSearchResultMapper mapper = new MoviesSearchResultMapper();
-
+    @Test // TODO ten test mi się nie podoba, jak leci NPE to znaczy, że kod mamy źle napisany, test powinien być w stylu shouldReturnEmptyListWhenParameterIsNull
+    void shouldThrowExceptionWhenParameterIsNull() {
+        //given
         List<MovieDto> result = null;
 
-        assertThrows(NullPointerException.class, () -> mapper.toMoviesDto(null));
+        //when
+        Executable executable = () -> MoviesSearchResultMapper.toMoviesDto(null);
+
+        //then
+        assertThrows(NullPointerException.class, executable);
     }
 }

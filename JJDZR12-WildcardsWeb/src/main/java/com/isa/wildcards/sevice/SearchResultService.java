@@ -8,7 +8,6 @@ import com.isa.wildcards.repository.HistoryRepository;
 import com.isa.wildcards.repository.MovieRepository;
 import com.isa.wildcards.repository.UserRepository;
 import com.isa.wildcards.utilities.SearchEngine;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,9 +20,9 @@ import java.util.UUID;
 @Service
 @Slf4j
 public class SearchResultService {
+
     private final MovieRepository movieRepository;
     private final HistoryRepository historyRepository;
-    private final MoviesSearchResultMapper moviesSearchResultMapper;
     private final UserRepository userRepository;
 
     public List<MovieDto> findMoviesBySearchQuery(String searchQuery) {
@@ -31,18 +30,18 @@ public class SearchResultService {
         List<Movie> movieList = movieRepository.findAll();
         Map<Movie, Integer> foundMovies = SearchEngine.findMovies(movieList, searchQuery);
         log.info("Movies found: {}", foundMovies.size());
-        return moviesSearchResultMapper.toMoviesDto(foundMovies);
+        return MoviesSearchResultMapper.toMoviesDto(foundMovies);
     }
 
     public MovieDto getSearchSelectedResult(List<MovieDto> searchResultDto, UUID uuid) {
         log.info("Getting selected result with UUID: {}", uuid);
-       return searchResultDto.stream()
-               .filter(e -> e.getUuid().equals(uuid))
-               .findFirst()
-               .orElseGet(() -> {
-                   log.warn("No movie found with UUID: {}", uuid);
-                   return new MovieDto();
-               });
+        return searchResultDto.stream()
+                .filter(e -> e.getUuid().equals(uuid))
+                .findFirst()
+                .orElseGet(() -> {
+                    log.warn("No movie found with UUID: {}", uuid);
+                    return new MovieDto();
+                });
     }
 
     public void saveHistory(final String searchQuery, User user) {

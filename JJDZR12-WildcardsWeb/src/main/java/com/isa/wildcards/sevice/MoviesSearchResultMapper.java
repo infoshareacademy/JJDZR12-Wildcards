@@ -2,18 +2,17 @@ package com.isa.wildcards.sevice;
 
 import com.isa.wildcards.dto.MovieDto;
 import com.isa.wildcards.entity.Movie;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
 
-@Service
+@UtilityClass
 @Slf4j
 public class MoviesSearchResultMapper {
-    public List<MovieDto> toMoviesDto(final Map<Movie, Integer> foundMoviesWithPriority) {
 
+    public List<MovieDto> toMoviesDto(final Map<Movie, Integer> foundMoviesWithPriority) {
         List<Movie> sortedResults = foundMoviesWithPriority.entrySet()
                 .stream()
                 .sorted(Map.Entry.<Movie, Integer>comparingByValue().reversed())
@@ -45,5 +44,4 @@ public class MoviesSearchResultMapper {
             return movieDto;
         }).toList();
     }
-
 }

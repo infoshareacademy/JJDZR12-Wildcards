@@ -15,7 +15,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
 class UserServiceTest {
@@ -23,11 +27,11 @@ class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
-    @InjectMocks
-    private UserService userService;
-
     @Mock
     private HistoryRepository historyRepository;
+
+    @InjectMocks
+    private UserService userService;
 
     @Test
     void createNewUserSuccessful() {
@@ -96,25 +100,22 @@ class UserServiceTest {
     }
 
     @Test
-    void findAllByUserSuccessful() {
+    void shouldFindAllHistoriesByUser() {
+        //given
         User user = new User("testUser", "password");
-        userRepository.save(user);
-
-        System.out.println("User: " + user);
-
         History history1 = new History("Event 1", user);
         History history2 = new History("Event 2", user);
-        historyRepository.saveAll(List.of(history1, history2));
 
-        List<History> histories = historyRepository.findAllByUser(user);
+        given(userRepository.findByUsername(user.getUsername())).willReturn(user);
+        given(historyRepository.findAllByUser(user)).willReturn(List.of(history1, history2));
 
-        System.out.println("Size of histories: " + histories.size());
-        System.out.println("History 1: " + history1);
-        System.out.println("History 2: " + history2);
+        //when
+        List<History> result = userService.findAllByUser(user);
 
-        assertEquals(2, histories.size());
-        assertTrue(histories.contains(history1));
-        assertTrue(histories.contains(history2));
+        //then
+        assertThat(result)
+                .hasSize(2)
+                .containsExactly(history1, history2);
     }
 
     @Test
@@ -127,4 +128,3 @@ class UserServiceTest {
         assertTrue(histories.isEmpty());
     }
 }
-
