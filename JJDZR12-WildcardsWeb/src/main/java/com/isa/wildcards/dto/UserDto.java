@@ -1,5 +1,6 @@
 package com.isa.wildcards.dto;
 
+import com.isa.wildcards.entity.UserRole;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,5 +15,7 @@ public class UserDto {
     private String password;
 
     private UUID uuid;
+
+    private UserRole userRole;
 
 }

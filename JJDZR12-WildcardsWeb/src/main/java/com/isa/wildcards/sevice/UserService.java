@@ -16,7 +16,7 @@ public class UserService {
         if(userRepository.existsByUsername(userDto.getUserName())){
             throw new IllegalArgumentException("Username " + userDto.getUserName() + " already exists");
         }
-        userRepository.save(new User(userDto.getUserName(),userDto.getPassword()));
+        userRepository.save(new User(userDto.getUserName(),userDto.getPassword(), userDto.getUserRole()));
     }
 
     private User getUserByUsername(String username) {
