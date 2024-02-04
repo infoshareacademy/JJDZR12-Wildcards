@@ -6,13 +6,16 @@ import com.isa.wildcards.entity.User;
 import com.isa.wildcards.repository.HistoryRepository;
 import com.isa.wildcards.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final HistoryRepository historyRepository;
@@ -35,5 +38,10 @@ public class UserService {
 
     public List<History> findAllByUser(final User user) {
         return historyRepository.findAllByUser(userRepository.findByUsername(user.getUsername()));
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return getUserByUsername(username);
     }
 }

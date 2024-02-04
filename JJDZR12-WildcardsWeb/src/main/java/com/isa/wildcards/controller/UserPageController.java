@@ -8,6 +8,11 @@ import com.isa.wildcards.sevice.UserService;
 import com.isa.wildcards.utilities.SessionManager;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +27,8 @@ public class UserPageController {
     private final UserService userService;
 
     private SessionManager sessionManager;
+
+    private AuthenticationManager authenticationManager;
 
     @ModelAttribute("user")
     public User user() {
@@ -63,6 +70,9 @@ public class UserPageController {
 
     @PostMapping("/sign-in")
     public String logInUser(@ModelAttribute("user") User user, Model model, RedirectAttributes redirectAttributes, HttpSession session){
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
         if (userService.logInUser(user)) {
             sessionManager.logIn(user.getUsername());
             redirectAttributes.addFlashAttribute("successMessage", "Hello " + user.getUsername());
