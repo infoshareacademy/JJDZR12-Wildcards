@@ -30,7 +30,7 @@ class SearchResultServiceTest {
 
     @Test
     void shouldFindMoviesBySearchQuery() {
-        //given
+
         String searchQuery = "Action";
         List<Movie> movieList = Arrays.asList(
                 createSampleMovie("Inception", "2010", "PG-13", "16 Jul 2010", "148 min", "Action, Adventure, Sci-Fi", "Christopher Nolan", "Christopher Nolan, Jonathan Nolan", "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page", "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", "English", "USA, UK", "Won 4 Oscars. Another 152 wins & 217 nominations.", "74"),
@@ -46,12 +46,12 @@ class SearchResultServiceTest {
 
         when(movieRepository.findAll()).thenReturn(movieList);
 
-        //when
         List<MovieDto> result = searchResultService.findMoviesBySearchQuery(searchQuery);
 
-        //then
         assertThat(result).usingRecursiveComparison().isEqualTo(expected);
     }
+
+
 
     private Movie createSampleMovie(String title, String year, String rated, String released, String runtime, String genre,
                                     String director, String writer, String actors, String plot, String language, String country,

@@ -6,12 +6,13 @@ import com.isa.wildcards.sevice.MoviesSearchResultMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class MoviesSearchResultMapperTest {
 
@@ -41,17 +42,5 @@ class MoviesSearchResultMapperTest {
 
         //then
         assertThat(result).isEmpty();
-    }
-
-    @Test // TODO ten test mi się nie podoba, jak leci NPE to znaczy, że kod mamy źle napisany, test powinien być w stylu shouldReturnEmptyListWhenParameterIsNull
-    void shouldThrowExceptionWhenParameterIsNull() {
-        //given
-        List<MovieDto> result = null;
-
-        //when
-        Executable executable = () -> MoviesSearchResultMapper.toMoviesDto(null);
-
-        //then
-        assertThrows(NullPointerException.class, executable);
     }
 }
