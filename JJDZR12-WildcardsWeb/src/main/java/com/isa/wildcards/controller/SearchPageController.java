@@ -64,4 +64,6 @@ public class SearchPageController {
         model.addAttribute("selectedResult", movieDto);
         return "selected-result-page";
     }
+
+
 }
