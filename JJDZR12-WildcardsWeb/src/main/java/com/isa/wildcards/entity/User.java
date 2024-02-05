@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class User extends AbstractEntity {
 
+    @Column(unique = true)
     private String username;
 
     private String password;

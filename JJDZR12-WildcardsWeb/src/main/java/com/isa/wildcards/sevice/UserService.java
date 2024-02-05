@@ -36,4 +36,8 @@ public class UserService {
     public List<History> findAllByUser(final User user) {
         return historyRepository.findAllByUser(userRepository.findByUsername(user.getUsername()));
     }
+
+    public void deleteUser(final User user) {
+        userRepository.delete(userRepository.findByUsername(user.getUsername()));
+    }
 }
