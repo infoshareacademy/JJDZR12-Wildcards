@@ -43,12 +43,6 @@ public class MovieDto {
 
     }
 
-    public MovieDto(String title, String director) {
-        this.title = title;
-        this.director = director;
-    }
-
-
     @Override
     public String toString() {
         return "MovieDto{" +
