@@ -2,6 +2,32 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragment::head}"></head>
 <body>
+<script>
+    function fillInput(word) {
+        const inputElement = document.getElementById("searchQuery");
+
+        inputElement.value = word;
+
+        document.getElementById("myDropdown").classList.remove("show");
+    }
+
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }
+</script>
 
 <div class="top-bar">
     <a th:href="@{/user}">
@@ -10,7 +36,7 @@
 </div>
 
 <div class="button-container">
-    <a th:href="@{/}">
+    <a th:href="@{/online}">
         <button class="split-button online-button-offline">Online</button>
     </a>
     <a th:href="@{/offline}">
@@ -64,34 +90,7 @@
     </div>
 </div>
 <footer th:replace="~{fragment::footer}"></footer>
-<script>
-    function fillInput(word) {
-        const inputElement = document.getElementById("searchQuery");
 
-        inputElement.value = word;
-
-        document.getElementById("myDropdown").classList.remove("show");
-    }
-
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    window.onclick = function (event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
-</script>
-<script async src="https://cse.google.com/cse.js?cx=34edd376404af4e39"></script>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-
 </body>
 </html>

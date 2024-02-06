@@ -1,60 +1,72 @@
 package com.isa.wildcards.controller;
 
 import com.isa.wildcards.dto.MovieDto;
-import com.isa.wildcards.entity.History;
+import com.isa.wildcards.dto.SearchResultDto;
 import com.isa.wildcards.entity.User;
 import com.isa.wildcards.sevice.SearchResultService;
-import com.isa.wildcards.sevice.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@RequiredArgsConstructor
 @Controller
-@SessionAttributes({"resultListModel", "historyQueryList"})
+@RequiredArgsConstructor
 public class SearchPageController {
 
     private final SearchResultService service;
-    private final UserService userService;
+    private final HttpSession session;
+
+    @ModelAttribute("mySession")
+    public HttpSession session() {
+        return session;
+    }
 
     @GetMapping("/")
-    public String getMainSearchPage(Model model, @ModelAttribute("successMessage") String successMessage) {
+    public String getMain() {
+        return "redirect:/online";
+    }
+
+    @GetMapping("/online")
+    public String getMainSearchPageOnline(Model model, @ModelAttribute("successMessage") String successMessage) {
+        model.addAttribute("resultListModel", null);
         model.addAttribute("successMessage", successMessage);
-        return "main-search-page";
+        List<String> history = service.getHistoryIfUserIsLogged((User) session.getAttribute("loggedUser"));
+        model.addAttribute("historyQueryList", history);
+        return "main-search-page-online";
+    }
+
+    @PostMapping("/online")
+    public String postSearchQueryOnline(@RequestParam String searchQuery, Model model) {
+        User loggedUser = (User) session.getAttribute("loggedUser");
+        saveHistoryOnLoggedUser(searchQuery, model, loggedUser);
+
+        List<SearchResultDto> resultList = service.getSearchResultDtoList(searchQuery);
+
+        model.addAttribute("resultListModel", resultList);
+        return "search-result-page-online";
     }
 
     @GetMapping("/offline")
-    public String getMainSearchPageOffline(Model model, HttpSession session) {
+    public String getMainSearchPageOffline(Model model) {
         model.addAttribute("resultListModel", null);
-
-        if ((session.getAttribute("historyQueryList") == null || session.getAttribute("historyQueryList").equals(new ArrayList<History>()))
-        && session.getAttribute("loggedUser") == null) {
-            model.addAttribute("historyQueryList", "You need to be logged");
-        } else if (session.getAttribute("historyQueryList").equals(new ArrayList<History>())) {
-            model.addAttribute("historyQueryList", "History is empty");
-        } else {
-            model.addAttribute("historyQueryList", session.getAttribute("historyQueryList"));
-        }
+        List<String> history = service.getHistoryIfUserIsLogged((User) session.getAttribute("loggedUser"));
+        model.addAttribute("historyQueryList", history);
         return "main-search-page-offline";
     }
 
     @PostMapping("/offline")
-    public String postSearchQuery(@RequestParam String searchQuery, Model model, HttpSession session) {
+    public String postSearchQueryOffline(@RequestParam String searchQuery, Model model) {
         User loggedUser = (User) session.getAttribute("loggedUser");
-        if (loggedUser != null) {
-            service.saveHistory(searchQuery, loggedUser);
-            session.setAttribute("historyQueryList", userService.findAllByUser(loggedUser));
-            model.addAttribute("historyQueryList", session.getAttribute("historyQueryList"));
-        }
+        saveHistoryOnLoggedUser(searchQuery, model, loggedUser);
+
         List<MovieDto> searchResultDto = service.findMoviesBySearchQuery(searchQuery);
+
         model.addAttribute("resultListModel", searchResultDto);
-        return "search-result-page";
+        return "search-result-page-offline";
     }
 
     @GetMapping("details/{uuid}")
@@ -63,5 +75,12 @@ public class SearchPageController {
         MovieDto movieDto = service.getSearchSelectedResult(searchResultDto, uuid);
         model.addAttribute("selectedResult", movieDto);
         return "selected-result-page";
+    }
+
+    private void saveHistoryOnLoggedUser(final String searchQuery, final Model model, final User loggedUser) {
+        if (loggedUser != null) {
+            List<String> history = service.saveHistoryAndUploadUserHistory(searchQuery, loggedUser);
+            model.addAttribute("historyQueryList", history);
+        }
     }
 }
