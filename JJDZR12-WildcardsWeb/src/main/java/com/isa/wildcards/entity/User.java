@@ -24,20 +24,21 @@ public class User extends AbstractEntity implements UserDetails {
 
     @Column(name = "user_role",columnDefinition = "VARCHAR(255) default 'USER'")
     @Enumerated(EnumType.STRING)
-    private UserRoles userRoles;
+    private UserRole userRole;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<History> historyId;
 
-    public User(final String username, final String password) {
+    public User(final String username, final String password, final UserRole userRole) {
         this.username = username;
         this.password = password;
+        this.userRole = userRole;
     }
 
     @Override
     @Transient
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(userRoles.name()));
+        return Collections.singleton(new SimpleGrantedAuthority(userRole.name()));
     }
 
     @Override

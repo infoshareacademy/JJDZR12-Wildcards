@@ -3,12 +3,14 @@ package com.isa.wildcards.sevice;
 import com.isa.wildcards.dto.UserDto;
 import com.isa.wildcards.entity.History;
 import com.isa.wildcards.entity.User;
+import com.isa.wildcards.entity.UserRole;
 import com.isa.wildcards.repository.HistoryRepository;
 import com.isa.wildcards.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,12 +21,13 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final HistoryRepository historyRepository;
+    private final PasswordEncoder passwordEncoder;
 
     public void createNewUser(UserDto userDto){
-        if(userRepository.existsByUsername(userDto.getUserName())){
+        if (userRepository.existsByUsername(userDto.getUserName())) {
             throw new IllegalArgumentException("Username " + userDto.getUserName() + " already exists");
         }
-        userRepository.save(new User(userDto.getUserName(),userDto.getPassword()));
+        userRepository.save(new User(userDto.getUserName(), passwordEncoder.encode(userDto.getPassword()), UserRole.USER));
     }
 
     private User getUserByUsername(String username) {
@@ -33,7 +36,7 @@ public class UserService implements UserDetailsService {
 
     public boolean logInUser(User user){
         User existingUser = getUserByUsername(user.getUsername());
-        return existingUser != null && user.getPassword().equals(existingUser.getPassword());
+        return existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword());
     }
 
     public List<History> findAllByUser(final User user) {

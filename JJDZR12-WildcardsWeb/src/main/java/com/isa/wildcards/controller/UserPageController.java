@@ -2,17 +2,14 @@ package com.isa.wildcards.controller;
 
 import com.isa.wildcards.dto.UserDto;
 import com.isa.wildcards.entity.User;
-import com.isa.wildcards.repository.HistoryRepository;
-import com.isa.wildcards.repository.UserRepository;
 import com.isa.wildcards.sevice.UserService;
 import com.isa.wildcards.utilities.SessionManager;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,10 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserPageController {
 
     private final UserService userService;
-
     private SessionManager sessionManager;
-
-    private AuthenticationManager authenticationManager;
 
     @ModelAttribute("user")
     public User user() {
@@ -50,7 +44,7 @@ public class UserPageController {
         return "registration-page";
     }
 
-    @GetMapping("/sign-in")
+    @GetMapping("/login")
     public String getSignInPage(Model model, @ModelAttribute("successMessage") String successMessage) {
         model.addAttribute("successMessage", successMessage);
         return "sign-in-page";
@@ -70,9 +64,6 @@ public class UserPageController {
 
     @PostMapping("/sign-in")
     public String logInUser(@ModelAttribute("user") User user, Model model, RedirectAttributes redirectAttributes, HttpSession session){
-        Authentication authentication = authenticationManager
-                .authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
         if (userService.logInUser(user)) {
             sessionManager.logIn(user.getUsername());
             redirectAttributes.addFlashAttribute("successMessage", "Hello " + user.getUsername());
@@ -86,8 +77,9 @@ public class UserPageController {
     }
 
     @GetMapping("/sign-out")
-    public String logOutUser(){
+    public String logOutUser(Authentication authentication, HttpServletRequest request, HttpServletResponse response) {
         sessionManager.logOut();
+        new SecurityContextLogoutHandler().logout(request, response, authentication);
         return "redirect:/";
     }
 
