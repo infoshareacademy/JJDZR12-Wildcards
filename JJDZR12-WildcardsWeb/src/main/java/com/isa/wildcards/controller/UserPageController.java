@@ -2,8 +2,6 @@ package com.isa.wildcards.controller;
 
 import com.isa.wildcards.dto.UserDto;
 import com.isa.wildcards.entity.User;
-import com.isa.wildcards.repository.HistoryRepository;
-import com.isa.wildcards.repository.UserRepository;
 import com.isa.wildcards.sevice.UserService;
 import com.isa.wildcards.utilities.SessionManager;
 import jakarta.servlet.http.HttpSession;
@@ -50,19 +48,19 @@ public class UserPageController {
     }
 
     @PostMapping("/addUser")
-    public String addUser(@ModelAttribute("newUser") UserDto userDto, Model model, RedirectAttributes redirectAttributes){
+    public String addUser(@ModelAttribute("newUser") UserDto userDto, Model model, RedirectAttributes redirectAttributes) {
         try {
             userService.createNewUser(userDto);
             redirectAttributes.addFlashAttribute("successMessage", "Registration successful! You can now log in.");
             return "redirect:/sign-in";
-        } catch(IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             model.addAttribute("error", true);
             return "registration-page";
         }
     }
 
     @PostMapping("/sign-in")
-    public String logInUser(@ModelAttribute("user") User user, Model model, RedirectAttributes redirectAttributes, HttpSession session){
+    public String logInUser(@ModelAttribute("user") User user, Model model, RedirectAttributes redirectAttributes, HttpSession session) {
         if (userService.logInUser(user)) {
             sessionManager.logIn(user.getUsername());
             redirectAttributes.addFlashAttribute("successMessage", "Hello " + user.getUsername());
@@ -76,13 +74,21 @@ public class UserPageController {
     }
 
     @GetMapping("/sign-out")
-    public String logOutUser(){
+    public String logOutUser() {
+        sessionManager.logOut();
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete-user")
+    public String deleteUser(HttpSession session) {
+        User loggedUser = (User) session.getAttribute("loggedUser");
+        userService.deleteUser(loggedUser);
         sessionManager.logOut();
         return "redirect:/";
     }
 
     @GetMapping("/easter-egg")
-    public String getEasterEgg(){
+    public String getEasterEgg() {
         return "easter-egg";
     }
 }

@@ -20,6 +20,11 @@
         </a>
     </div>
     <div class="centered-bar">
+        <a th:if="${sessionManager.isLoggedIn()}" class="search-button-user" onclick="confirmDelete()">
+            <button class="search-button-user" type="button">Delete your account</button>
+        </a>
+    </div>
+    <div class="centered-bar">
         <a th:if="${sessionManager.isLoggedIn()}" th:href="@{/sign-out}" class="search-button-user">
             <button class="search-button-user" type="button">Log Out</button>
         </a>
@@ -31,6 +36,14 @@
     </div>
 </div>
 <footer th:replace="~{fragment::footer}"></footer>
+<script th:inline="javascript">
+    function confirmDelete() {
+        var userConfirmed = confirm("Are you sure you want to delete your account?");
+        if (userConfirmed) {
+            window.location.href = "/delete-user"
+        }
+    }
+</script>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
