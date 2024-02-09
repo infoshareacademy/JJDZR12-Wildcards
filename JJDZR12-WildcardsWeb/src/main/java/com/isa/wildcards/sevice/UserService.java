@@ -17,18 +17,18 @@ public class UserService {
     private final UserRepository userRepository;
     private final HistoryRepository historyRepository;
 
-    public void createNewUser(UserDto userDto){
-        if(userRepository.existsByUsername(userDto.getUserName())){
+    public void createNewUser(UserDto userDto) {
+        if (userRepository.existsByUsername(userDto.getUserName())) {
             throw new IllegalArgumentException("Username " + userDto.getUserName() + " already exists");
         }
-        userRepository.save(new User(userDto.getUserName(),userDto.getPassword()));
+        userRepository.save(new User(userDto.getUserName(), userDto.getPassword()));
     }
 
     private User getUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 
-    public boolean logInUser(User user){
+    public boolean logInUser(User user) {
         User existingUser = getUserByUsername(user.getUsername());
         return existingUser != null && user.getPassword().equals(existingUser.getPassword());
     }

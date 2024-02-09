@@ -37,10 +37,10 @@
 
 <div class="button-container">
     <a th:href="@{/online}">
-        <button class="split-button online-button-offline">Online</button>
+        <button class="split-button online-button-online">Online</button>
     </a>
     <a th:href="@{/offline}">
-        <button class="split-button offline-button-offline">Offline</button>
+        <button class="split-button offline-button-online">Offline</button>
     </a>
 </div>
 
@@ -50,12 +50,14 @@
 
 <div class="search-container">
 
-    <form th:action="@{/offline}" method="post" autocomplete="off">
-        <div class="search-bar">
-            <input class="search-label" required type="text" id="searchQuery" name="searchQuery">
-            <button class="search-button" type="submit">
-                <i class="fa fa-search"></i>
-            </button>
+    <form th:action="@{/online}" method="post" autocomplete="off">
+        <div class="search-container-offline">
+            <div class="search-bar-result">
+                <input class="search-label" type="text" id="searchQuery" name="searchQuery">
+                <button class="search-button" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
         </div>
     </form>
 
@@ -71,22 +73,25 @@
     </div>
 
 </div>
-
-
 <div class="container-center">
-    <div class="search-results" th:if="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
-        <ul class="result-list">
+    <div class="search-results">
+        <ul class="result-list" th:if="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
             <li th:each="field, iterStat : ${resultListModel}" class="search-item" th:unless="${iterStat.index >= 10}">
-                <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: white;">
-                    <span th:text="${field.getTitle()}"></span>
+                <a th:href="@{${field.getLink()}}" style="color: #357ae8; text-decoration: none;">
+                    <span th:text="${field.getTitle()}" style="color: #357ae8"></span>
+                    <br>
+                    <br>
+                    <span th:text="${field.getDisplayLink()}" style="color: #357ae8"></span>
                 </a>
                 <br>
-                <span th:text="${field.getPlot()}"></span>
+                <br>
             </li>
         </ul>
+
+        <p th:unless="${resultListModel != null and not #lists.isEmpty(resultListModel)}" style="color: white">No
+            results found</p>
     </div>
 </div>
-
 <footer th:replace="~{fragment::footer}"></footer>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
