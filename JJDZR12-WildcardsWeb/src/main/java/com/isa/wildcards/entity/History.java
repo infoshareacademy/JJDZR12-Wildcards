@@ -5,6 +5,8 @@ import lombok.*;
 
 import java.util.Objects;
 
+import java.util.Objects;
+
 @Table(name = "history")
 @Getter
 @Setter

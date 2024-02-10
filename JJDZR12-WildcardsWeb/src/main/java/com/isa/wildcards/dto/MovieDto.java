@@ -39,6 +39,10 @@ public class MovieDto {
 
     private String metascore;
 
+    public MovieDto() {
+
+    }
+
     @Override
     public String toString() {
         return "MovieDto{" +
