@@ -4,7 +4,7 @@ spring:
     username: bestuser
     password: bestuser
     driver-class-name: com.mysql.cj.jdbc.Driver
-
+    
   thymeleaf:
     prefix: classpath:/templates/
     check-template-location: true
@@ -23,3 +23,6 @@ spring:
 
 server:
   port: 8080
+
+logging:
+  config: classpath:logback.xml

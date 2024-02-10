@@ -12,6 +12,7 @@ import com.isa.wildcards.repository.MovieRepository;
 import com.isa.wildcards.repository.UserRepository;
 import com.isa.wildcards.utilities.SearchEngine;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import lombok.extern.log4j.Log4j2;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -19,6 +20,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -26,32 +28,41 @@ import java.util.*;
 @Log4j2
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class SearchResultService {
 
     private final MovieRepository movieRepository;
     private final HistoryRepository historyRepository;
-    private final MoviesSearchResultMapper moviesSearchResultMapper;
     private final UserRepository userRepository;
     private final UserService userService;
 
     public List<MovieDto> findMoviesBySearchQuery(String searchQuery) {
+        log.info("Finding movies by search query: {}", searchQuery);
         List<Movie> movieList = movieRepository.findAll();
         Map<Movie, Integer> foundMovies = SearchEngine.findMovies(movieList, searchQuery);
-        return moviesSearchResultMapper.toMoviesDto(foundMovies);
+        log.info("Movies found: {}", foundMovies.size());
+        return MoviesSearchResultMapper.toMoviesDto(foundMovies);
     }
 
     public MovieDto getSearchSelectedResult(List<MovieDto> searchResultDto, UUID uuid) {
+        log.info("Getting selected result with UUID: {}", uuid);
         return searchResultDto.stream()
                 .filter(e -> e.getUuid().equals(uuid))
                 .findFirst()
-                .orElseGet(MovieDto::new);
+                .orElseGet(() -> {
+                    log.warn("No movie found with UUID: {}", uuid);
+                    return new MovieDto();
+                });
     }
 
     public History saveHistory(final String searchQuery, User user) {
+        log.info("Saving search history for user: {} with query: {}", user.getUsername(), searchQuery);
         User byUsername = userRepository.findByUsername(user.getUsername());
         History history = new History();
         history.setUser(byUsername);
         history.setSearchQuery(searchQuery);
+        historyRepository.save(history);
+        log.info("Search history saved successfully.");
         return historyRepository.saveAndFlush(history);
     }
 

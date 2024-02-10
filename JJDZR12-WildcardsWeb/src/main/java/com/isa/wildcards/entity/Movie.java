@@ -37,4 +37,12 @@ public class Movie extends AbstractUuidEntity{
     private String awards;
 
     private String metascore;
+
+    public Movie() {
+    }
+
+    public Movie(String title, String director) {
+        this.title = title;
+        this.director = director;
+    }
 }
