@@ -5,11 +5,6 @@ spring:
     password: bestuser
     driver-class-name: com.mysql.cj.jdbc.Driver
     
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: false
-    
   thymeleaf:
     prefix: classpath:/templates/
     check-template-location: true

@@ -1,13 +1,14 @@
 package com.isa.wildcards.controller;
 
 import com.isa.wildcards.dto.MovieDto;
-import com.isa.wildcards.entity.History;
+import com.isa.wildcards.dto.SearchResultDto;
 import com.isa.wildcards.entity.User;
 import com.isa.wildcards.sevice.SearchResultService;
 import com.isa.wildcards.sevice.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-import static org.assertj.core.api.Fail.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -39,62 +39,35 @@ public class SearchPageControllerTest {
     @MockBean
     private SearchResultService searchResultService;
 
-    @MockBean
+    @Mock
     private UserService userService;
 
     @Test
     public void testGetMainUserPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("main-search-page"));
+                .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/online"));
     }
 
-
     @Test
-    void testGetMainSearchPageOffline() {
-
-        MockitoAnnotations.initMocks(this);
+    public void testPostSearchQueryOnline() {
 
         Model model = mock(Model.class);
         HttpSession session = mock(HttpSession.class);
-        when(session.getAttribute("historyQueryList")).thenReturn(new ArrayList<>());
-        when(session.getAttribute("loggedUser")).thenReturn(null);
-
-        String result = searchPageController.getMainSearchPageOffline(model, session);
-
-        verify(model, times(1)).addAttribute(eq("resultListModel"), isNull());
-
-        assertEquals("main-search-page-offline", result);
-    }
-
-
-    @Test
-    public void testPostSearchQuery() throws Exception {
-        Model model = mock(Model.class);
-        HttpSession session = mock(HttpSession.class);
-
         User loggedUser = new User();
-        List<History> historyList = new ArrayList<>();
-
         when(session.getAttribute("loggedUser")).thenReturn(loggedUser);
-        when(userService.findAllByUser(loggedUser)).thenReturn(historyList);
 
         String searchQuery = "testQuery";
-        List<MovieDto> searchResultDto = new ArrayList<>();
-        when(searchResultService.findMoviesBySearchQuery(searchQuery)).thenReturn(searchResultDto);
+        List<SearchResultDto> searchResultDtoList = new ArrayList<>();
+        when(searchResultService.getSearchResultDtoList(searchQuery)).thenReturn(searchResultDtoList);
 
-        doNothing().when(searchResultService).saveHistory(eq(searchQuery), eq(loggedUser));
+        SearchPageController searchPageController = new SearchPageController(searchResultService, session);
 
-        SearchPageController searchPageController = new SearchPageController(searchResultService, userService);
+        String result = searchPageController.postSearchQueryOnline(searchQuery, model);
 
-        String result = searchPageController.postSearchQuery(searchQuery, model, session);
-
-        verify(searchResultService, times(1)).saveHistory(eq(searchQuery), eq(loggedUser));
-        verify(session, times(1)).setAttribute(eq("historyQueryList"), eq(historyList));
-        verify(model, times(1)).addAttribute(eq("historyQueryList"), isNull());
-        verify(model, times(1)).addAttribute(eq("resultListModel"), eq(searchResultDto));
-
-        assertEquals("search-result-page", result);
+        verify(searchResultService, times(1)).getSearchResultDtoList(eq(searchQuery));
+        verify(model, times(1)).addAttribute(eq("resultListModel"), eq(searchResultDtoList));
+        assertEquals("search-result-page-online", result);
     }
 
     @Test
