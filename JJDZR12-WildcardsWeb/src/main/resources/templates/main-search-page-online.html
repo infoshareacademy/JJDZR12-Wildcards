@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragment::head}"></head>
+
 <body>
 <script>
     function fillInput(word) {
@@ -37,11 +38,15 @@
 
 <div class="button-container">
     <a th:href="@{/online}">
-        <button class="split-button online-button-offline">Online</button>
+        <button class="split-button online-button-online">Online</button>
     </a>
     <a th:href="@{/offline}">
-        <button class="split-button offline-button-offline">Offline</button>
+        <button class="split-button offline-button-online">Offline</button>
     </a>
+</div>
+
+<div class="centered-container-message">
+    <p class="prompt text-center" th:if="${successMessage}" th:text="${successMessage}"></p>
 </div>
 
 <div class="logo-container">
@@ -50,14 +55,14 @@
 
 <div class="search-container">
 
-    <form th:action="@{/offline}" method="post" autocomplete="off">
-        <div class="search-bar">
-            <input class="search-label" required type="text" id="searchQuery" name="searchQuery">
-            <button class="search-button" type="submit">
-                <i class="fa fa-search"></i>
-            </button>
-        </div>
-    </form>
+        <form th:action="@{/online}" method="post" autocomplete="off">
+            <div class="search-bar">
+                <input class="search-label" required type="text" id="searchQuery" name="searchQuery">
+                <button class="search-button" type="submit">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </form>
 
     <div class="history">
         <div class="dropdown">
@@ -71,23 +76,17 @@
     </div>
 
 </div>
-
-
-<div class="container-center">
-    <div class="search-results" th:if="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
-        <ul class="result-list">
-            <li th:each="field, iterStat : ${resultListModel}" class="search-item" th:unless="${iterStat.index >= 10}">
-                <a th:href="@{'/details/' + ${field.getUuid()}}" style="color: white;">
-                    <span th:text="${field.getTitle()}"></span>
-                </a>
-                <br>
-                <span th:text="${field.getPlot()}"></span>
-            </li>
-        </ul>
-    </div>
-</div>
-
 <footer th:replace="~{fragment::footer}"></footer>
+<script>
+    var container = document.querySelector('.centered-container-message');
+    var successMessage = document.querySelector('.prompt');
+
+    if (successMessage) {
+        setTimeout(function() {
+            container.style.display = 'none';
+        }, 3000);
+    }
+</script>
 <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

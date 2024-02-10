@@ -1,10 +1,9 @@
 package com.isa.wildcards.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Objects;
 
 import java.util.Objects;
 
@@ -27,16 +26,15 @@ public class History extends AbstractEntity {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        History history = (History) o;
-        return Objects.equals(searchQuery, history.searchQuery) &&
-                Objects.equals(user, history.user);
+        final History history = (History) o;
+        return Objects.equals(getSearchQuery(), history.getSearchQuery()) && Objects.equals(getUser(), history.getUser());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(searchQuery, user);
+        return Objects.hash(getSearchQuery(), getUser());
     }
 }

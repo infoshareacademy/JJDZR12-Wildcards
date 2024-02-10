@@ -500,6 +500,10 @@ table.gsc-search-box {
 
 
 .centered-container-message {
+    position: fixed;
+    top: 7%;
+    left: 47%;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;

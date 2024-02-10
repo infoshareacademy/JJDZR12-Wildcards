@@ -35,6 +35,7 @@ public class UserService {
         return userRepository.findByUsername(username);
     }
 
+
     public boolean logInUser(User user){
         log.info("Logging in user with username: {}", user.getUsername());
 
@@ -60,5 +61,9 @@ public class UserService {
         }
 
         return historyRepository.findAllByUser(existingUser);
+    }
+
+    public void deleteUser(final User user) {
+        userRepository.delete(userRepository.findByUsername(user.getUsername()));
     }
 }

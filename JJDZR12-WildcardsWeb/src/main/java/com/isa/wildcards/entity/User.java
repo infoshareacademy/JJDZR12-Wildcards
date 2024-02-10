@@ -14,6 +14,7 @@ import java.util.Objects;
 @NoArgsConstructor
 public class User extends AbstractEntity {
 
+    @Column(unique = true)
     private String username;
 
     private String password;
@@ -27,16 +28,15 @@ public class User extends AbstractEntity {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(username, user.username) &&
-                Objects.equals(password, user.password);
+        final User user = (User) o;
+        return Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password);
+        return Objects.hash(getUsername(), getPassword());
     }
 }
