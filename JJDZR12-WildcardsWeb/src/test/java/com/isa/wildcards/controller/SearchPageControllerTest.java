@@ -45,30 +45,8 @@ public class SearchPageControllerTest {
     @Test
     public void testGetMainUserPage() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("main-search-page"));
-    }
-
-
-    @Test
-    void testGetMainSearchPageOffline() {
-        Model model = mock(Model.class);
-        HttpSession session = mock(HttpSession.class);
-
-        // Mock session attribute
-        when(session.getAttribute("loggedUser")).thenReturn(null);
-
-        // Mock service response
-        List<String> history = new ArrayList<>();
-        when(searchResultService.getHistoryIfUserIsLogged(null)).thenReturn(history);
-
-        // Call method under test with session
-        String result = searchPageController.getMainSearchPageOffline(model);
-
-        // Verify interactions and assertions
-        verify(model, times(1)).addAttribute(eq("resultListModel"), eq(null));
-        verify(model, times(1)).addAttribute(eq("historyQueryList"), eq(history));
-        assertEquals("main-search-page-offline", result);
+                .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.redirectedUrl("/online"));
     }
 
     @Test
