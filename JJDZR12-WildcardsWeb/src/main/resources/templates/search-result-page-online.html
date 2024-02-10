@@ -76,12 +76,11 @@
 <div class="container-center">
     <div class="search-results">
         <ul class="result-list" th:if="${resultListModel != null and not #lists.isEmpty(resultListModel)}">
-            <li th:each="field, iterStat : ${resultListModel}" class="search-item" th:unless="${iterStat.index >= 10}">
-                <a th:href="@{${field.getLink()}}" style="color: #357ae8; text-decoration: none;">
-                    <span th:text="${field.getTitle()}" style="color: #357ae8"></span>
+            <li th:each="field, iterStat : ${resultListModel}" th:unless="${iterStat.index >= 10}">
+                <a th:href="@{${field.getLink()}}" style="color: #1b3d73; text-decoration: none; display: block; margin-bottom: 2px; margin-top: 2px;">
+                    <span th:text="${field.getTitle()}" style="color: #e2e4ea; font-weight: bold;"></span>
                     <br>
-                    <br>
-                    <span th:text="${field.getDisplayLink()}" style="color: #357ae8"></span>
+                    <span th:text="${field.getDisplayLink()}" style="color: #357ae8; font-size: smaller;"></span>
                 </a>
                 <br>
                 <br>

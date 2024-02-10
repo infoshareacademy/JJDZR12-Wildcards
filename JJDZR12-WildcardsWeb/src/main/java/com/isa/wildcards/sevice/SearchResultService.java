@@ -55,7 +55,7 @@ public class SearchResultService {
                 });
     }
 
-    public void saveHistory(final String searchQuery, User user) {
+    public History saveHistory(final String searchQuery, User user) {
         log.info("Saving search history for user: {} with query: {}", user.getUsername(), searchQuery);
         User byUsername = userRepository.findByUsername(user.getUsername());
         History history = new History();
