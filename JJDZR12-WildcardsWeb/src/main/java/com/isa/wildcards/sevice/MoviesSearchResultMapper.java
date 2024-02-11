@@ -2,21 +2,23 @@ package com.isa.wildcards.sevice;
 
 import com.isa.wildcards.dto.MovieDto;
 import com.isa.wildcards.entity.Movie;
-import org.springframework.stereotype.Component;
+import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.Map;
 
-@Component
+@UtilityClass
+@Slf4j
 public class MoviesSearchResultMapper {
-    public List<MovieDto> toMoviesDto(final Map<Movie, Integer> foundMoviesWithPriority) {
 
+    public List<MovieDto> toMoviesDto(final Map<Movie, Integer> foundMoviesWithPriority) {
         List<Movie> sortedResults = foundMoviesWithPriority.entrySet()
                 .stream()
                 .sorted(Map.Entry.<Movie, Integer>comparingByValue().reversed())
                 .map(Map.Entry::getKey)
                 .toList();
-
+        log.info("Sorting movies by priority.");
         return mapToDto(sortedResults);
     }
 
@@ -24,7 +26,7 @@ public class MoviesSearchResultMapper {
         return sortedMovies.stream().map(movie -> {
             MovieDto movieDto = new MovieDto();
             movieDto.setUuid(movie.getUuid());
-            movieDto.setTitle(movie.getTitle());
+            movieDto.setTitle(movie.getTitle() != null ? movie.getTitle().toLowerCase() : null);
             movieDto.setYear(movie.getYear());
             movieDto.setRated(movie.getRated());
             movieDto.setReleased(movie.getReleased());
@@ -38,8 +40,8 @@ public class MoviesSearchResultMapper {
             movieDto.setLanguage(movie.getLanguage());
             movieDto.setCountry(movie.getCountry());
             movieDto.setAwards(movie.getAwards());
+            log.info("Mapping movies to DTO.");
             return movieDto;
         }).toList();
     }
-
 }
